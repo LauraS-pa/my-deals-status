@@ -21,14 +21,19 @@ npm run login
 
 A browser window opens. Log into the admin UI, dismiss any expired-session dialogs, confirm you can see My Deals, then press **Enter** in the terminal.
 
-Auth is saved to:
+Auth is saved to (Windows runner default):
 
-`%USERPROFILE%\.my-deals-status\storage.json` (Windows)  
-`~/.my-deals-status/storage.json` (macOS/Linux)
+`C:\actions-runner\my-deals-auth\storage.json`
+
+That path is outside the git checkout so Actions clean checkouts don’t delete it, and the runner service account can read it. After login, grant read access if needed:
+
+```powershell
+icacls "C:\actions-runner\my-deals-auth" /grant "NT AUTHORITY\NETWORK SERVICE:(OI)(CI)R" /T
+```
 
 Re-run `npm run login` whenever the weekly job fails with a session-expired error.
 
-Optional: set a custom path via repo variable `MYDEALS_AUTH_STATE` or env `MYDEALS_AUTH_STATE`.
+Optional: override with env `MYDEALS_AUTH_STATE`.
 
 ## 3. Register the GitHub runner
 

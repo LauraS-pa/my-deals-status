@@ -30,7 +30,8 @@ jobs:
 
       - name: Run My Deals check
         env:
-          MYDEALS_AUTH_STATE: ${{ vars.MYDEALS_AUTH_STATE }}
+          # Shared path on this Windows runner (readable by NETWORK SERVICE).
+          MYDEALS_AUTH_STATE: C:\actions-runner\my-deals-auth\storage.json
         run: npm run check
 
       - name: Commit status update

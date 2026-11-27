@@ -4,6 +4,17 @@ import { chromium } from "playwright";
 import { ADMIN_UI_URL } from "./apps.mjs";
 import { getAuthStatePath } from "./auth-path.mjs";
 
+const MAX_WAIT_MS = 10 * 60 * 1000;
+const POLL_MS = 2000;
+
+async function pageLooksLoggedIn(page) {
+  const text = await page.locator("body").innerText().catch(() => "");
+  if (/login has expired|please log in again/i.test(text)) return false;
+  if (/sign in|log in/i.test(text) && text.length < 800) return false;
+  // After a real login the My Deals UI is much richer than the expired dialog.
+  return text.length > 200;
+}
+
 /**
  * One-time (or refresh) interactive login on the VPN / corp network machine.
  * Saves Playwright storage state for the weekly headless check.
@@ -14,25 +25,39 @@ async function main() {
 
   console.log("Opening My Deals admin for login…");
   console.log(`Auth state will be saved to: ${authPath}`);
-  console.log("Log in in the browser window, then return here and press Enter.\n");
+  console.log(
+    "In the browser: sign in if asked. When you can see the My Deals page, just wait — this script will save automatically.\n"
+  );
 
   const browser = await chromium.launch({ headless: false });
   const context = await browser.newContext();
   const page = await context.newPage();
   await page.goto(ADMIN_UI_URL, { waitUntil: "domcontentloaded" });
 
-  await new Promise((resolve) => {
-    process.stdin.resume();
-    process.stdin.once("data", () => resolve());
-  });
+  // Nudge past the expired-session dialog when present.
+  const loginBtn = page.getByRole("button", { name: /^login$/i });
+  if ((await loginBtn.count()) > 0) {
+    await loginBtn.first().click().catch(() => {});
+  }
 
-  const expired = await page
-    .getByText(/login has expired|please log in/i)
-    .count()
-    .catch(() => 0);
-  if (expired > 0) {
-    console.warn(
-      "Warning: login-expired message is still visible. Save anyway only if you finished logging in."
+  const started = Date.now();
+  let ready = false;
+  while (Date.now() - started < MAX_WAIT_MS) {
+    if (await pageLooksLoggedIn(page)) {
+      // Require the logged-in look to stay stable briefly.
+      await page.waitForTimeout(2500);
+      if (await pageLooksLoggedIn(page)) {
+        ready = true;
+        break;
+      }
+    }
+    await page.waitForTimeout(POLL_MS);
+  }
+
+  if (!ready) {
+    await browser.close();
+    throw new Error(
+      "Timed out waiting for a logged-in My Deals session. Run npm run login again and finish signing in."
     );
   }
 
