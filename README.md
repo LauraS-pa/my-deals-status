@@ -4,20 +4,29 @@ Simple visual reference for which **My Deals** products are live in each app and
 
 ## View locally
 
-From this folder:
-
 ```bash
 npx --yes serve .
 ```
 
-Then open the URL shown in the terminal (usually `http://localhost:3000`).
+Open the URL shown in the terminal (usually `http://localhost:3000`).
 
 ## Data
 
 - Live status: [`data/status.json`](data/status.json)
 - Shape / rules: [`data/schema.md`](data/schema.md)
 
-A weekly Cursor Automation checks [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index), updates `data/status.json` (including a short change summary), and commits the result so this page stays current.
+## Weekly refresh (self-hosted)
+
+A GitHub Actions workflow runs **Mondays at 09:00 Pacific** on a **self-hosted runner** (VPN / corp network), checks the [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index) API, updates `data/status.json` (including a short change summary), and pushes the commit.
+
+Setup guide: [`docs/self-hosted-runner.md`](docs/self-hosted-runner.md)
+
+```bash
+npm ci
+npx playwright install chromium
+npm run login    # once, on the runner machine
+npm run check    # manual refresh
+```
 
 ## Apps & regions
 
