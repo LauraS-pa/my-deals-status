@@ -2,8 +2,8 @@ name: Weekly My Deals check
 
 on:
   schedule:
-    # Monday 09:00 Pacific (PST = UTC-8). During PDT this is 10:00 local.
-    - cron: "0 17 * * 1"
+    # Monday 11:00 Pacific (PST = UTC-8). During PDT this is 12:00 local.
+    - cron: "0 19 * * 1"
   workflow_dispatch:
 
 permissions:

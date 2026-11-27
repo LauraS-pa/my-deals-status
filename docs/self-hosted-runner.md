@@ -5,7 +5,7 @@ The weekly check must run on a machine that can reach `fpadminui-us.planetart.co
 ## 1. Machine requirements
 
 - Windows, macOS, or Linux that’s **on corp network / VPN** when the job runs
-- Prefer an always-on box so Monday 9am Pacific doesn’t depend on a laptop lid
+- Prefer an always-on box so Monday 11am Pacific doesn’t depend on a laptop lid
 - Node.js 20+
 - Git
 
@@ -42,7 +42,7 @@ Optional: override with env `MYDEALS_AUTH_STATE`.
 3. Use the default `self-hosted` label (the workflow expects `runs-on: self-hosted`)  
 4. Install the runner as a **service** so it starts on boot  
 
-Keep this machine on VPN (or corp network) at least around Monday 09:00 Pacific.
+Keep this machine on VPN (or corp network) at least around Monday 11:00 Pacific.
 
 ## 4. Verify
 
