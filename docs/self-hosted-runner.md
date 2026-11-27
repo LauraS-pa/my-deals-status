@@ -23,9 +23,10 @@ A browser window opens. Log into the admin UI, dismiss any expired-session dialo
 
 Auth is saved to (Windows runner default):
 
-`C:\actions-runner\my-deals-auth\storage.json`
+- `C:\actions-runner\my-deals-auth\storage-us.json`
+- `C:\actions-runner\my-deals-auth\storage-eu.json`
 
-That path is outside the git checkout so Actions clean checkouts don’t delete it, and the runner service account can read it. After login, grant read access if needed:
+`npm run login` signs into **both** the US and EU admin UIs. After login, grant read access if needed:
 
 ```powershell
 icacls "C:\actions-runner\my-deals-auth" /grant "NT AUTHORITY\NETWORK SERVICE:(OI)(CI)R" /T
@@ -33,7 +34,7 @@ icacls "C:\actions-runner\my-deals-auth" /grant "NT AUTHORITY\NETWORK SERVICE:(O
 
 Re-run `npm run login` whenever the weekly job fails with a session-expired error.
 
-Optional: override with env `MYDEALS_AUTH_STATE`.
+Optional: override with env `MYDEALS_AUTH_DIR`.
 
 ## 3. Register the GitHub runner
 

@@ -38,4 +38,7 @@
 
 ## Source of truth for live status
 
-Admin tool: https://fpadminui-us.planetart.com/mydeals/index
+- US / CA: https://fpadminui-us.planetart.com/mydeals/index (`admin-fp`)
+- UK / EU regions: https://fpadminui-eu.planetart.com/mydeals/index (`admin-fpeu`)
+
+Products with **failed** or **deactivated** status are omitted. Lists keep admin order (shown numbered on the site).

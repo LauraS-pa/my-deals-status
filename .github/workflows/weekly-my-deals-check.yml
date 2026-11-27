@@ -38,8 +38,8 @@ jobs:
 
       - name: Run My Deals check
         env:
-          # Shared path on this Windows runner (readable by NETWORK SERVICE).
-          MYDEALS_AUTH_STATE: C:\actions-runner\my-deals-auth\storage.json
+          # Shared auth folder on this Windows runner (US + EU sessions).
+          MYDEALS_AUTH_DIR: C:\actions-runner\my-deals-auth
         run: npm run check
 
       - name: Commit status update

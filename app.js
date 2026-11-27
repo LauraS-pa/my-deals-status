@@ -59,9 +59,9 @@ function renderRegion(region, products) {
   const list = Array.isArray(products) ? products.filter(Boolean) : [];
   const hasLive = list.length > 0;
   const body = hasLive
-    ? `<ul class="products">${list
+    ? `<ol class="products">${list
         .map((name) => `<li>${escapeHtml(name)}</li>`)
-        .join("")}</ul>`
+        .join("")}</ol>`
     : `<p class="empty">None live</p>`;
 
   return `

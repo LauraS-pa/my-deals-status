@@ -3,14 +3,16 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "playwright";
 import {
-  ADMIN_UI_URL,
-  API_BASE,
+  ADMIN_EU,
+  ADMIN_US,
   APPS,
   DEFAULT_SOURCE,
   LIVE_STATUS,
+  adminForRegion,
+  isExcludedProduct,
   resolveOption,
 } from "./apps.mjs";
-import { assertAuthStateExists } from "./auth-path.mjs";
+import { assertEuAndUsAuth, resolveUsAuthPath } from "./auth-path.mjs";
 import { buildChangeSummary } from "./summary.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -41,9 +43,9 @@ function isLoginExpiredText(text) {
   return /login has expired|please log in again|sign in/i.test(text || "");
 }
 
-async function apiCall(page, apiPath, params = {}, method = "GET") {
+async function apiCall(page, apiBase, apiPath, params = {}, method = "GET") {
   return page.evaluate(
-    async ({ apiBase, apiPath: pathName, params: query, method: httpMethod }) => {
+    async ({ apiBase: base, apiPath: pathName, params: query, method: httpMethod }) => {
       const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -65,7 +67,7 @@ async function apiCall(page, apiPath, params = {}, method = "GET") {
         }
       }
 
-      const url = new URL(`${apiBase}${pathName}`);
+      const url = new URL(`${base}${pathName}`);
       const init = { method: httpMethod, credentials: "include", headers };
       if (httpMethod === "GET") {
         for (const [key, value] of Object.entries(query || {})) {
@@ -86,18 +88,18 @@ async function apiCall(page, apiPath, params = {}, method = "GET") {
       }
       return { ok: response.ok, status: response.status, body };
     },
-    { apiBase: API_BASE, apiPath, params, method }
+    { apiBase, apiPath, params, method }
   );
 }
 
-async function apiGetWithFallback(page, context, apiPath, params) {
-  const getResult = await apiCall(page, apiPath, params, "GET");
+async function apiGetWithFallback(page, context, apiBase, apiPath, params) {
+  const getResult = await apiCall(page, apiBase, apiPath, params, "GET");
   if (getResult.ok) return getResult;
 
-  const postResult = await apiCall(page, apiPath, params, "POST");
+  const postResult = await apiCall(page, apiBase, apiPath, params, "POST");
   if (postResult.ok) return postResult;
 
-  const url = new URL(`${API_BASE}${apiPath}`);
+  const url = new URL(`${apiBase}${apiPath}`);
   for (const [key, value] of Object.entries(params)) {
     if (value === undefined || value === null || value === "") continue;
     url.searchParams.set(key, String(value));
@@ -141,114 +143,159 @@ function extractFilter(payload) {
   };
 }
 
-async function ensureAuthenticated(page) {
-  await page.goto(ADMIN_UI_URL, { waitUntil: "domcontentloaded", timeout: 60_000 });
+async function ensureAuthenticated(page, admin) {
+  await page.goto(admin.uiUrl, {
+    waitUntil: "domcontentloaded",
+    timeout: 60_000,
+  });
   await page.waitForTimeout(1500);
   const text = await page.locator("body").innerText().catch(() => "");
   if (isLoginExpiredText(text)) {
     throw new Error(
-      "Admin session expired. On the runner machine run: npm run login"
+      `${admin.id.toUpperCase()} admin session expired. On the runner machine run: npm run login`
     );
   }
 }
 
-async function loadFilters(page, context) {
-  const filterRes = await apiGetWithFallback(page, context, "/mydeals/filterList", {
-    source: DEFAULT_SOURCE,
-    site: "FP",
-    region: "US",
-  });
+async function loadFilters(page, context, admin) {
+  const filterRes = await apiGetWithFallback(
+    page,
+    context,
+    admin.apiBase,
+    "/mydeals/filterList",
+    {
+      source: DEFAULT_SOURCE,
+      site: "FP",
+      region: admin.id === "eu" ? "UK" : "US",
+    }
+  );
   if (!filterRes.ok) {
     throw new Error(
-      `filterList failed (${filterRes.status}). Re-run npm run login if unauthorized.`
+      `${admin.id.toUpperCase()} filterList failed (${filterRes.status}). Re-run npm run login if unauthorized.`
     );
   }
   return extractFilter(filterRes.body);
 }
 
-async function fetchLiveFor(page, context, searchParam) {
-  const res = await apiGetWithFallback(page, context, "/mydeals/list", searchParam);
-  if (!res.ok) {
-    throw new Error(
-      `mydeals/list failed for ${JSON.stringify(searchParam)} (${res.status})`
-    );
+/** Keep admin list order; skip failed/deactivated; de-dupe by name. */
+function productsFromList(list) {
+  const names = [];
+  const seen = new Set();
+  for (const row of list) {
+    if (isExcludedProduct(row)) continue;
+    const name = productName(row);
+    if (!name) continue;
+    const trimmed = String(name).trim();
+    if (!trimmed || seen.has(trimmed)) continue;
+    seen.add(trimmed);
+    names.push(trimmed);
   }
-  const list = extractList(res.body);
-  const names = [
-    ...new Set(
-      list
-        .map(productName)
-        .filter(Boolean)
-        .map((name) => String(name).trim())
-        .filter(Boolean)
-    ),
-  ].sort((a, b) => a.localeCompare(b));
   return names;
 }
 
-async function main() {
-  const authPath = assertAuthStateExists();
-  const previous = readJson(STATUS_PATH);
+async function fetchLiveFor(page, context, admin, searchParam) {
+  const res = await apiGetWithFallback(
+    page,
+    context,
+    admin.apiBase,
+    "/mydeals/list",
+    searchParam
+  );
+  if (!res.ok) {
+    throw new Error(
+      `mydeals/list failed for ${JSON.stringify(searchParam)} on ${admin.id} (${res.status})`
+    );
+  }
+  return productsFromList(extractList(res.body));
+}
 
-  console.log(`Using auth state: ${authPath}`);
-  const browser = await chromium.launch({ headless: true });
+async function openAdminSession(browser, admin, authPath) {
   const context = await browser.newContext({ storageState: authPath });
   const page = await context.newPage();
+  await ensureAuthenticated(page, admin);
+  const filters = await loadFilters(page, context, admin);
+  const liveStatus =
+    resolveOption(filters.statusList, ["live", "online", "active"], {
+      preferExactValue: LIVE_STATUS,
+    })?.value ?? LIVE_STATUS;
+  const source =
+    resolveOption(filters.sourceList, ["md drawer", "drawer", "my deals"], {
+      preferExactValue: DEFAULT_SOURCE,
+    })?.value ?? DEFAULT_SOURCE;
+  return { context, page, filters, liveStatus, source, admin };
+}
+
+async function main() {
+  const { usPath, euPath } = assertEuAndUsAuth();
+  // Prefer renamed US file, allow legacy storage.json via resolveUsAuthPath.
+  const usAuth = resolveUsAuthPath();
+  const previous = readJson(STATUS_PATH);
+
+  console.log(`US auth: ${usAuth}`);
+  console.log(`EU auth: ${euPath}`);
+
+  const browser = await chromium.launch({ headless: true });
+  let usSession;
+  let euSession;
 
   try {
-    await ensureAuthenticated(page);
-    const filters = await loadFilters(page, context);
+    usSession = await openAdminSession(browser, ADMIN_US, usAuth);
+    euSession = await openAdminSession(browser, ADMIN_EU, euPath);
 
-    const liveStatus =
-      resolveOption(filters.statusList, ["live", "online", "active"], {
-        preferExactValue: LIVE_STATUS,
-      })?.value ?? LIVE_STATUS;
-
-    const source =
-      resolveOption(filters.sourceList, ["md drawer", "drawer", "my deals"], {
-        preferExactValue: DEFAULT_SOURCE,
-      })?.value ?? DEFAULT_SOURCE;
-
-    console.log(`Using source=${source}, status=${liveStatus}`);
+    console.log(
+      `US source=${usSession.source}, status=${usSession.liveStatus}; EU source=${euSession.source}, status=${euSession.liveStatus}`
+    );
 
     const nextApps = [];
 
     for (const app of APPS) {
-      const siteOpt = resolveOption(filters.siteList, [
-        ...app.siteMatchers,
-        app.name,
-        app.id,
-      ]);
-      if (!siteOpt) {
-        throw new Error(
-          `Could not map app "${app.name}" to a site in filterList. Available: ${filters.siteList
-            .map((s) => s.label || s.value)
-            .join(", ")}`
-        );
-      }
-
       const live = {};
       for (const region of app.regions) {
-        const regionOpt = resolveOption(filters.regionList, [region], {
+        const admin = adminForRegion(region);
+        const session = admin.id === "eu" ? euSession : usSession;
+
+        const siteOpt = resolveOption(session.filters.siteList, [
+          ...app.siteMatchers,
+          app.name,
+          app.id,
+        ]);
+        if (!siteOpt) {
+          throw new Error(
+            `Could not map app "${app.name}" on ${admin.id.toUpperCase()}. Available: ${session.filters.siteList
+              .map((s) => s.label || s.value)
+              .join(", ")}`
+          );
+        }
+
+        const regionOpt = resolveOption(session.filters.regionList, [region], {
           preferExactValue: region,
         });
         if (!regionOpt) {
-          console.warn(`Skipping ${app.name}/${region}: region not in filterList`);
+          console.warn(
+            `Skipping ${app.name}/${region}: region not in ${admin.id} filterList`
+          );
           live[region] = [];
           continue;
         }
 
         const searchParam = {
-          source,
+          source: session.source,
           site: siteOpt.value,
           region: regionOpt.value,
           product: "",
-          status: liveStatus,
+          status: session.liveStatus,
           lang: "",
         };
 
-        process.stdout.write(`Checking ${app.name} / ${region}… `);
-        const products = await fetchLiveFor(page, context, searchParam);
+        process.stdout.write(
+          `Checking ${app.name} / ${region} (${admin.id.toUpperCase()})… `
+        );
+        const products = await fetchLiveFor(
+          session.page,
+          session.context,
+          admin,
+          searchParam
+        );
         console.log(`${products.length} live`);
         live[region] = products;
       }
@@ -280,6 +327,8 @@ async function main() {
       console.log(`Updated ${STATUS_PATH}`);
     }
   } finally {
+    await usSession?.context.close().catch(() => {});
+    await euSession?.context.close().catch(() => {});
     await browser.close();
   }
 }
