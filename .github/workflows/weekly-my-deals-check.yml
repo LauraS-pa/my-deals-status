@@ -17,6 +17,10 @@ jobs:
       run:
         shell: cmd
     steps:
+      # Must come before checkout so actions/checkout can clone (not zip-download).
+      - name: Add portable Git to PATH
+        run: echo C:\actions-runner\git\cmd>>"%GITHUB_PATH%"
+
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -39,18 +43,14 @@ jobs:
         run: npm run check
 
       - name: Commit status update
-        env:
-          GIT_EXE: C:\actions-runner\git\cmd\git.exe
         run: |
-          cd /d "%GITHUB_WORKSPACE%"
-          "%GIT_EXE%" status
-          "%GIT_EXE%" config user.name "my-deals-status-bot"
-          "%GIT_EXE%" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          "%GIT_EXE%" add data/status.json
-          "%GIT_EXE%" diff --cached --quiet
+          git config user.name "my-deals-status-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/status.json
+          git diff --cached --quiet
           if %ERRORLEVEL%==0 (
             echo No status.json changes to commit.
             exit /b 0
           )
-          "%GIT_EXE%" commit -m "chore: weekly My Deals status check"
-          "%GIT_EXE%" push
+          git commit -m "chore: weekly My Deals status check"
+          git push
