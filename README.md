@@ -2,6 +2,10 @@
 
 Simple visual reference for which **My Deals** products are live in each app and region.
 
+## Live site
+
+https://lauras-pa.github.io/my-deals-status/
+
 ## View locally
 
 ```bash
