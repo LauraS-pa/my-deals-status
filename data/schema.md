@@ -1,0 +1,41 @@
+# Status data shape
+
+`data/status.json` is the single source of truth for the status page.
+
+## Fields
+
+- `lastChecked` — ISO 8601 timestamp of the latest agent check, or `null` before the first run.
+- `changeSummary` — short plain-language summary of what changed since the previous check (2–5 sentences max). On the first run, say this is the baseline.
+- `apps` — ordered list of apps to display.
+
+### Each app
+
+- `id` — stable kebab-case id (do not rename).
+- `name` — display name.
+- `regions` — regions that apply to this app (fixed; do not add/remove without an explicit request).
+- `live` — object keyed by region code. Each value is an **array of product name strings** that are currently live in My Deals for that app/region. Use `[]` when the region has no live products. Omit a region key only if that region is not in `regions`.
+
+### Example `live` entry
+
+```json
+"live": {
+  "US": ["10 Free Prints", "Buy 1 Get 1 Free Photobooks"],
+  "CA": [],
+  "FR": ["10 Free Prints"]
+}
+```
+
+## Apps and regions (canonical)
+
+| App | Regions |
+|-----|---------|
+| FreePrints | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
+| Photobooks | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
+| Photo Tiles | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
+| Photo Art | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
+| FreePrints Cards | UK |
+| Ink Cards | US |
+
+## Source of truth for live status
+
+Admin tool: https://fpadminui-us.planetart.com/mydeals/index

@@ -1,0 +1,42 @@
+{
+  "lastChecked": null,
+  "changeSummary": "No check has run yet. Status will appear after the first weekly agent run.",
+  "apps": [
+    {
+      "id": "freeprints",
+      "name": "FreePrints",
+      "regions": ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+      "live": {}
+    },
+    {
+      "id": "photobooks",
+      "name": "Photobooks",
+      "regions": ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+      "live": {}
+    },
+    {
+      "id": "photo-tiles",
+      "name": "Photo Tiles",
+      "regions": ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+      "live": {}
+    },
+    {
+      "id": "photo-art",
+      "name": "Photo Art",
+      "regions": ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+      "live": {}
+    },
+    {
+      "id": "freeprints-cards",
+      "name": "FreePrints Cards",
+      "regions": ["UK"],
+      "live": {}
+    },
+    {
+      "id": "ink-cards",
+      "name": "Ink Cards",
+      "regions": ["US"],
+      "live": {}
+    }
+  ]
+}
