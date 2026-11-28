@@ -103,7 +103,6 @@ body {
   outline: none;
 }
 
-.summary,
 .board {
   background: var(--panel);
   border: 1px solid var(--line);
@@ -112,11 +111,6 @@ body {
   padding: 1.25rem 1.4rem 1.4rem;
 }
 
-.summary {
-  margin-bottom: 1.25rem;
-}
-
-.summary h2,
 .board h2 {
   margin: 0 0 0.65rem;
   font-size: 0.78rem;
@@ -126,12 +120,6 @@ body {
   color: var(--accent);
 }
 
-.summary p {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.55;
-}
-
 .app-block {
   margin-top: 1.35rem;
   scroll-margin-top: 1.25rem;
@@ -139,6 +127,28 @@ body {
 
 .app-block:target h3 {
   color: var(--accent);
+}
+
+.app-summary {
+  margin-top: 0.85rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.app-summary h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.app-summary p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 .app-block:first-child {
@@ -312,7 +322,6 @@ body {
     padding-top: 1.5rem;
   }
 
-  .summary,
   .board {
     padding: 1rem 1rem 1.15rem;
   }

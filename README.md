@@ -21,7 +21,7 @@ Open the URL shown in the terminal (usually `http://localhost:3000`).
 
 ## Weekly refresh (self-hosted)
 
-A GitHub Actions workflow runs **Mondays at 11:00 Pacific** on a **self-hosted runner** (VPN / corp network), checks the [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index) API, updates `data/status.json` (including a short change summary), and pushes the commit.
+A GitHub Actions workflow runs **Mondays at 11:00 Pacific** on a **self-hosted runner** (VPN / corp network), checks the [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index) API, updates `data/status.json` (including a per-app change summary for enables, disables, and sort changes), and pushes the commit.
 
 Setup guide: [`docs/self-hosted-runner.md`](docs/self-hosted-runner.md)
 

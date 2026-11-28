@@ -5,7 +5,6 @@
 ## Fields
 
 - `lastChecked` — ISO 8601 timestamp of the latest agent check, or `null` before the first run.
-- `changeSummary` — short plain-language summary of what changed since the previous check (2–5 sentences max). On the first run, say this is the baseline.
 - `apps` — ordered list of apps to display.
 
 ### Each app
@@ -13,7 +12,12 @@
 - `id` — stable kebab-case id (do not rename).
 - `name` — display name.
 - `regions` — regions that apply to this app (fixed; do not add/remove without an explicit request).
-- `live` — object keyed by region code. Each value is an **array of product name strings** that are currently live in My Deals for that app/region. Use `[]` when the region has no live products. Omit a region key only if that region is not in `regions`.
+- `live` — object keyed by region code. Each value is an **array of product name strings** that are currently live in My Deals for that app/region (admin sort order). Use `[]` when the region has no live products.
+- `changeSummary` — short plain-language summary of **notable** changes for this app since the previous check:
+  - **enabled** — product newly live
+  - **disabled** — product no longer live
+  - **sort order changed** — same products, different order
+  - On the first run: baseline message. If nothing notable: `No notable changes.`
 
 ### Example `live` entry
 

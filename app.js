@@ -1,5 +1,4 @@
 async function loadStatus() {
-  const summaryEl = document.getElementById("change-summary");
   const checkedEl = document.getElementById("last-checked");
   const boardsEl = document.getElementById("boards");
   const jumpNavEl = document.getElementById("jump-nav");
@@ -10,10 +9,8 @@ async function loadStatus() {
       throw new Error(`HTTP ${response.status}`);
     }
     const data = await response.json();
-    render(data, { summaryEl, checkedEl, boardsEl, jumpNavEl });
+    render(data, { checkedEl, boardsEl, jumpNavEl });
   } catch (error) {
-    summaryEl.textContent = "Could not load status data.";
-    summaryEl.classList.add("error");
     checkedEl.textContent = "Last checked: unavailable";
     boardsEl.innerHTML = `<p class="error">Failed to load data/status.json (${error.message}).</p>`;
   }
@@ -38,8 +35,6 @@ function appAnchorId(app) {
 }
 
 function render(data, els) {
-  els.summaryEl.textContent =
-    data.changeSummary || "No change summary available.";
   els.checkedEl.textContent = `Last checked: ${formatChecked(data.lastChecked)}`;
 
   const apps = Array.isArray(data.apps) ? data.apps : [];
@@ -72,6 +67,7 @@ function renderApp(app) {
   const live = app.live && typeof app.live === "object" ? app.live : {};
   const cards = regions.map((region) => renderRegion(region, live[region])).join("");
   const id = appAnchorId(app);
+  const summary = app.changeSummary || "No notable changes.";
 
   return `
     <article class="app-block" id="${id}">
@@ -84,6 +80,10 @@ function renderApp(app) {
       </div>
       <div class="region-scroll" tabindex="0" aria-label="${escapeHtml(app.name || "App")} regions">
         <div class="region-grid">${cards}</div>
+      </div>
+      <div class="app-summary">
+        <h4>Since last check</h4>
+        <p>${escapeHtml(summary)}</p>
       </div>
     </article>
   `;

@@ -1,6 +1,5 @@
 {
   "lastChecked": "2026-11-28T00:10:14.924Z",
-  "changeSummary": "Added (809): freeprints / FR: CUSTOM PHOTO CALENDAR; freeprints / FR: CUSTOM BAUBLE; freeprints / FR: MAGNETIC PHOTO STRIP SET; freeprints / FR: Photo Standees; freeprints / FR: PHOTO CANVAS; freeprints / FR: HEART-SHAPED PHOTO MAGNET SET; freeprints / FR: CUSTOM PHOTO MUG; freeprints / FR: PHOTO KEYRING; …",
   "apps": [
     {
       "id": "freeprints",
@@ -349,7 +348,8 @@
           "SCHOOL PHOTO BUNDLE",
           "PHOTO GLASS CHOPPING BOARD"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     },
     {
       "id": "photobooks",
@@ -690,7 +690,8 @@
           "WOODEN HEART EASEL",
           "CUSTOM BAUBLE"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     },
     {
       "id": "photo-tiles",
@@ -1035,7 +1036,8 @@
           "WOODEN HEART EASEL",
           "Photo Standees"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     },
     {
       "id": "photo-art",
@@ -1393,7 +1395,8 @@
           "CUSTOM PHOTO CUSHION",
           "WOODEN HEART EASEL"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     },
     {
       "id": "freeprints-cards",
@@ -1444,7 +1447,8 @@
           "CUSTOM BEACH TOWEL",
           "PHOTO WATER BOTTLE"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     },
     {
       "id": "ink-cards",
@@ -1496,7 +1500,8 @@
           "PHOTO PUZZLE",
           "PET PORTRAIT CANVAS"
         ]
-      }
+      },
+      "changeSummary": "No notable changes."
     }
   ]
 }
