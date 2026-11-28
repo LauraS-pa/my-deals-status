@@ -21,11 +21,31 @@
           Which products are live, and in which apps and regions — refreshed by a weekly agent check.
         </p>
         <p class="meta" id="last-checked">Last checked: —</p>
+        <form class="filters" id="filters" hidden>
+          <label class="filter-field">
+            <span class="filter-label">App</span>
+            <select id="filter-app" name="app">
+              <option value="">All apps</option>
+            </select>
+          </label>
+          <label class="filter-field">
+            <span class="filter-label">Region</span>
+            <select id="filter-region" name="region">
+              <option value="">All regions</option>
+            </select>
+          </label>
+          <button type="button" class="filter-clear" id="filter-clear" hidden>
+            Clear filters
+          </button>
+        </form>
         <nav class="jump-nav" id="jump-nav" aria-label="Jump to letter" hidden></nav>
       </header>
 
       <section class="board" aria-labelledby="board-heading">
-        <h2 id="board-heading">Products</h2>
+        <div class="board-head">
+          <h2 id="board-heading">Products</h2>
+          <p class="board-count" id="board-count" hidden></p>
+        </div>
         <div id="boards"></div>
       </section>
     </div>

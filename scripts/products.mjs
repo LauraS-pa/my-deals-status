@@ -44,6 +44,16 @@ function foldSpelling(label) {
     .replace(/\bcushion\b/g, "pillow");
 }
 
+/** Collapse known product families into one group key. */
+function foldFamilies(label) {
+  return label
+    .replace(/\bfotodeken\b/g, "photo blanket")
+    .replace(/\bbaseball hat\b/g, "hat")
+    .replace(/\bcutout stickers\b/g, "stickers")
+    .replace(/\bphoto mug\b/g, "mug")
+    .replace(/\bphoto notebook\b/g, "notebook");
+}
+
 /** Drop size tokens so 11x14 / 14x11 / 10" variants share a group. */
 function stripMeasurements(label) {
   return label
@@ -65,6 +75,7 @@ function stripMeasurements(label) {
 export function productGroupKey(name) {
   const cleaned = cleanRawName(name);
   let label = foldSpelling(normalizeLabel(cleaned));
+  label = foldFamilies(label);
   label = stripMeasurements(label);
   return label || normalizeLabel(cleaned);
 }
@@ -75,17 +86,32 @@ export function productGroupKey(name) {
  * @param {string} name
  */
 export function productSortKey(name) {
-  let label = foldSpelling(normalizeLabel(cleanRawName(name)));
+  // Sort on the core before any ", Custom" / ", Personalized" suffix.
+  const core = String(name || "").split(",")[0];
+  let label = foldSpelling(normalizeLabel(cleanRawName(core)));
+  label = foldFamilies(label);
   label = stripMeasurements(label);
   label = label.replace(SORT_IGNORE, " ").replace(/\s+/g, " ").trim();
-  return label || foldSpelling(normalizeLabel(cleanRawName(name)));
+  return label || foldSpelling(normalizeLabel(cleanRawName(core)));
+}
+
+function toTitleCase(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/(^|[^a-z0-9à-ÿ’'])([a-zà-ÿ])/g, (_, sep, ch) => sep + ch.toUpperCase())
+    .replace(/\bTm\b/g, "™")
+    .replace(/\bOz\b/g, "oz");
 }
 
 /**
- * Visible US-facing title: drop measurements and fold UK/synonym variants.
+ * Visible US-facing title: drop measurements, fold UK/synonym variants,
+ * and move Custom / Personalized behind the core name
+ * (e.g. CUSTOM PHOTO APRON → "Photo Apron, Custom").
+ * Photo stays with the product name; it is only ignored for sorting.
  * @param {string} name
+ * @param {{ preferPhoto?: boolean }} [opts]
  */
-export function toCanonicalDisplayName(name) {
+export function toCanonicalDisplayName(name, opts = {}) {
   let s = cleanRawName(name);
   s = s.replace(
     /\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?(?:\s*(?:cm|mm|in|inch|inches))?\b/gi,
@@ -100,7 +126,39 @@ export function toCanonicalDisplayName(name) {
   s = s.replace(/\bCHRISTMAS CARDS\b/gi, "HOLIDAY CARDS");
   s = s.replace(/\bMOUSE MAT\b/gi, "MOUSE PAD");
   s = s.replace(/\bCUSHION\b/gi, "PILLOW");
-  return s.replace(/\s+/g, " ").trim() || cleanRawName(name);
+  s = s.replace(/\bFOTODEKEN\b/gi, "PHOTO BLANKET");
+  s = s.replace(/\bBASEBALL HAT\b/gi, "HAT");
+  s = s.replace(/\bCUTOUT STICKERS\b/gi, "STICKERS");
+  // Prefer "Photo Mug" / "Photo Notebook" when a plain custom variant won scoring.
+  if (opts.preferPhoto) {
+    s = s.replace(/\bCUSTOM MUG\b/gi, "CUSTOM PHOTO MUG");
+    s = s.replace(/\bCUSTOM NOTEBOOK\b/gi, "CUSTOM PHOTO NOTEBOOK");
+    if (!/\bphoto\b/i.test(s) && /\bblanket\b/i.test(s)) {
+      s = s.replace(/\bBLANKET\b/gi, "PHOTO BLANKET");
+    }
+  }
+  s = s.replace(/\s+/g, " ").trim() || cleanRawName(name);
+
+  const lower = s.toLowerCase();
+  const hasCustom = /\bcustom\b/.test(lower);
+  const hasPersonalized = /\bpersonalized\b/.test(lower);
+
+  let core = s
+    .replace(/\bCUSTOM\b/gi, " ")
+    .replace(/\bPERSONALIZED\b/gi, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  core = toTitleCase(core);
+
+  const trail = [];
+  if (hasCustom) trail.push("Custom");
+  if (hasPersonalized) trail.push("Personalized");
+
+  if (!core) {
+    return trail.length ? trail.join(" ") : toTitleCase(cleanRawName(name));
+  }
+  return trail.length ? `${core}, ${trail.join(" ")}` : core;
 }
 
 /**
@@ -111,6 +169,10 @@ export function pickDisplayName(names) {
   const cleaned = [...new Set(names.map(cleanRawName).filter(Boolean))];
   if (!cleaned.length) return "Untitled";
 
+  const preferPhoto = cleaned.some((n) =>
+    /\bphoto\b|\bfotodeken\b/i.test(n)
+  );
+
   const scored = cleaned.map((name) => {
     const lower = name.toLowerCase();
     let score = 0;
@@ -118,21 +180,23 @@ export function pickDisplayName(names) {
       score += 8;
     }
     if (
-      !/\bcolour|\bpersonalised|\bkeyring|\bmouse mat|\bcushion\b/i.test(lower) &&
+      !/\bcolour|\bpersonalised|\bkeyring|\bmouse mat|\bcushion|\bfotodeken\b/i.test(
+        lower
+      ) &&
       !/\bchristmas (?:photo )?cards\b/i.test(lower)
     ) {
       score += 4;
     }
     if (/\bholiday (?:photo )?cards\b/i.test(lower)) score += 1;
     if (/\bkeychain\b/i.test(lower)) score += 1;
-    // Prefer ALL CAPS catalog titles when present.
+    if (/\bphoto blanket\b/i.test(lower)) score += 2;
     if (name === name.toUpperCase()) score += 0.5;
     score += Math.min(name.length, 40) / 100;
     return { name, score };
   });
 
   scored.sort((a, b) => b.score - a.score || a.name.localeCompare(b.name));
-  return toCanonicalDisplayName(scored[0].name);
+  return toCanonicalDisplayName(scored[0].name, { preferPhoto });
 }
 
 /**

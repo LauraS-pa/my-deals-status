@@ -1,15 +1,27 @@
+/** @type {{ lastChecked?: string, products?: any[], apps?: any[] } | null} */
+let statusData = null;
+
 async function loadStatus() {
   const checkedEl = document.getElementById("last-checked");
   const boardsEl = document.getElementById("boards");
   const jumpNavEl = document.getElementById("jump-nav");
+  const filtersEl = document.getElementById("filters");
+  const countEl = document.getElementById("board-count");
 
   try {
     const response = await fetch("./data/status.json", { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
-    const data = await response.json();
-    render(data, { checkedEl, boardsEl, jumpNavEl });
+    statusData = await response.json();
+    setupFilters(statusData);
+    renderBoard({
+      checkedEl,
+      boardsEl,
+      jumpNavEl,
+      filtersEl,
+      countEl,
+    });
   } catch (error) {
     checkedEl.textContent = "Last checked: unavailable";
     boardsEl.innerHTML = `<p class="error">Failed to load data/status.json (${error.message}).</p>`;
@@ -36,13 +48,15 @@ function letterAnchor(letter) {
 
 /** Letter for A–Z jump links — mirrors server sort (ignore photo/custom/etc.). */
 function productSortKey(name) {
-  return String(name || "")
+  const core = String(name || "").split(",")[0];
+  return core
     .toLowerCase()
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
     .replace(/\bcolour\b/g, "color")
     .replace(/\bcolouring\b/g, "coloring")
     .replace(/\bpersonalised\b/g, "personalized")
     .replace(/\bkeyring\b/g, "keychain")
+    .replace(/\bfotodeken\b/g, "photo blanket")
     .replace(/\bchristmas photo cards\b/g, "holiday photo cards")
     .replace(/\bchristmas cards\b/g, "holiday cards")
     .replace(/\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?\b/g, " ")
@@ -58,20 +72,161 @@ function productLetter(name) {
   return /[A-Z]/.test(ch) ? ch : "#";
 }
 
-/** Prefer derived products from the check script. */
 function productsFromData(data) {
-  if (Array.isArray(data.products) && data.products.length) {
+  if (Array.isArray(data?.products) && data.products.length) {
     return data.products;
   }
   return [];
 }
 
-function render(data, els) {
-  els.checkedEl.textContent = `Last checked: ${formatChecked(data.lastChecked)}`;
+const REGION_ORDER = [
+  "US",
+  "UK",
+  "IE",
+  "FR",
+  "IT",
+  "ES",
+  "DE",
+  "AT",
+  "NL",
+  "BE",
+  "CA",
+];
+
+function collectFilterOptions(products) {
+  const apps = new Map();
+  const regions = new Set();
+  for (const product of products) {
+    for (const placement of product.placements || []) {
+      if (placement.appId) {
+        apps.set(placement.appId, placement.appName || placement.appId);
+      }
+      for (const code of placement.regions || []) {
+        regions.add(String(code).toUpperCase());
+      }
+    }
+  }
+
+  const appOptions = [...apps.entries()].sort((a, b) =>
+    a[1].localeCompare(b[1], undefined, { sensitivity: "base" })
+  );
+  const regionOptions = [...regions].sort((a, b) => {
+    const ia = REGION_ORDER.indexOf(a);
+    const ib = REGION_ORDER.indexOf(b);
+    const ra = ia === -1 ? 999 : ia;
+    const rb = ib === -1 ? 999 : ib;
+    if (ra !== rb) return ra - rb;
+    return a.localeCompare(b);
+  });
+  return { appOptions, regionOptions };
+}
+
+function setupFilters(data) {
+  const filtersEl = document.getElementById("filters");
+  const appSelect = document.getElementById("filter-app");
+  const regionSelect = document.getElementById("filter-region");
+  const clearBtn = document.getElementById("filter-clear");
+  if (!filtersEl || !appSelect || !regionSelect) return;
 
   const products = productsFromData(data);
-  if (products.length === 0) {
+  const { appOptions, regionOptions } = collectFilterOptions(products);
+
+  appSelect.innerHTML =
+    `<option value="">All apps</option>` +
+    appOptions
+      .map(
+        ([id, name]) =>
+          `<option value="${escapeHtml(id)}">${escapeHtml(name)}</option>`
+      )
+      .join("");
+
+  regionSelect.innerHTML =
+    `<option value="">All regions</option>` +
+    regionOptions
+      .map((code) => `<option value="${escapeHtml(code)}">${escapeHtml(code)}</option>`)
+      .join("");
+
+  filtersEl.hidden = products.length === 0;
+
+  const rerender = () => {
+    if (clearBtn) {
+      clearBtn.hidden = !appSelect.value && !regionSelect.value;
+    }
+    renderBoard({
+      checkedEl: document.getElementById("last-checked"),
+      boardsEl: document.getElementById("boards"),
+      jumpNavEl: document.getElementById("jump-nav"),
+      filtersEl,
+      countEl: document.getElementById("board-count"),
+    });
+  };
+
+  appSelect.addEventListener("change", rerender);
+  regionSelect.addEventListener("change", rerender);
+  clearBtn?.addEventListener("click", () => {
+    appSelect.value = "";
+    regionSelect.value = "";
+    rerender();
+  });
+}
+
+function currentFilters() {
+  const appSelect = document.getElementById("filter-app");
+  const regionSelect = document.getElementById("filter-region");
+  return {
+    appId: appSelect?.value || "",
+    region: regionSelect?.value || "",
+  };
+}
+
+function filterProduct(product, { appId, region }) {
+  const placements = Array.isArray(product.placements) ? product.placements : [];
+  const filtered = placements
+    .map((placement) => {
+      if (appId && placement.appId !== appId) return null;
+      const regions = Array.isArray(placement.regions) ? placement.regions : [];
+      const nextRegions = region
+        ? regions.filter((code) => String(code).toUpperCase() === region)
+        : regions;
+      if (region && nextRegions.length === 0) return null;
+      return { ...placement, regions: nextRegions };
+    })
+    .filter(Boolean);
+
+  if (!filtered.length) return null;
+  return { ...product, placements: filtered };
+}
+
+function renderBoard(els) {
+  if (!statusData) return;
+
+  els.checkedEl.textContent = `Last checked: ${formatChecked(statusData.lastChecked)}`;
+
+  const allProducts = productsFromData(statusData);
+  const filters = currentFilters();
+  const products = allProducts
+    .map((product) => filterProduct(product, filters))
+    .filter(Boolean);
+
+  if (els.countEl) {
+    const filtering = Boolean(filters.appId || filters.region);
+    els.countEl.hidden = !filtering;
+    if (filtering) {
+      els.countEl.textContent = `${products.length} of ${allProducts.length} products`;
+    }
+  }
+
+  if (allProducts.length === 0) {
     els.boardsEl.innerHTML = `<p class="empty">No live products in status data.</p>`;
+    if (els.jumpNavEl) {
+      els.jumpNavEl.hidden = true;
+      els.jumpNavEl.innerHTML = "";
+    }
+    return;
+  }
+
+  if (products.length === 0) {
+    els.boardsEl.innerHTML = `<p class="empty">No products match the selected app/region filters.</p>`;
     if (els.jumpNavEl) {
       els.jumpNavEl.hidden = true;
       els.jumpNavEl.innerHTML = "";
