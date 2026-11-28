@@ -74,6 +74,35 @@ body {
   color: var(--muted);
 }
 
+.jump-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.15rem;
+}
+
+.jump-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease;
+}
+
+.jump-link:hover,
+.jump-link:focus-visible {
+  border-color: #b7c4d6;
+  background: #fff;
+  color: var(--accent);
+  outline: none;
+}
+
 .summary,
 .board {
   background: var(--panel);
@@ -105,6 +134,11 @@ body {
 
 .app-block {
   margin-top: 1.35rem;
+  scroll-margin-top: 1.25rem;
+}
+
+.app-block:target h3 {
+  color: var(--accent);
 }
 
 .app-block:first-child {
