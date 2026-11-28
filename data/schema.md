@@ -10,7 +10,11 @@
 
 ### Each product
 
-- `name` — display title (English).
+- `name` — display title (English). Variants are combined into one row when they only differ by:
+  - measurements / sizes (e.g. `11x14 WALL FRAME` + `14x11 WALL FRAME`)
+  - spelling (color/colour, personalized/personalised, keychain/keyring, holiday/christmas, mouse pad/mat, pillow/cushion)
+  - invisible whitespace (e.g. duplicate storage box titles)
+- Directory order is A–Z on a sort key that ignores the words **photo**, **personalized** / **personalised**, and **custom** (so `CUSTOM PHOTO CALENDAR` sorts under **C** for calendar).
 - `placements` — apps where the product is live, each with:
   - `appId` / `appName`
   - `regions` — region codes in canonical order (US → UK → IE → FR → IT → ES → DE → AT → NL → BE → CA)
