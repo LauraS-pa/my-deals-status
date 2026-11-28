@@ -78,13 +78,15 @@ function renderApp(app, lastChecked) {
   const live = app.live && typeof app.live === "object" ? app.live : {};
   const cards = regions.map((region) => renderRegion(region, live[region])).join("");
   const id = appAnchorId(app);
-  const summary = app.changeSummary || "No notable changes.";
+  const summary = String(app.changeSummary || "").replace(/\s+/g, " ").trim();
   const preview = previewText(summary);
   const checkedLabel = formatChecked(lastChecked);
-  const needsExpand = preview !== summary.replace(/\s+/g, " ").trim();
+  const needsExpand = Boolean(summary) && preview !== summary;
 
-  const summaryBody = needsExpand
-    ? `
+  const summaryBody = !summary
+    ? ""
+    : needsExpand
+      ? `
       <details class="app-summary-details">
         <summary>
           <span class="app-summary-preview">${escapeHtml(preview)}</span>
@@ -93,7 +95,7 @@ function renderApp(app, lastChecked) {
         <p class="app-summary-full">${escapeHtml(summary)}</p>
       </details>
     `
-    : `<p class="app-summary-full">${escapeHtml(summary)}</p>`;
+      : `<p class="app-summary-full">${escapeHtml(summary)}</p>`;
 
   return `
     <article class="app-block" id="${id}">

@@ -390,7 +390,7 @@
           "CUSTOM POTHOLDER"
         ]
       },
-      "changeSummary": "US: disabled HARDCOVER PHOTO BOOK UK: disabled HARDCOVER PHOTO BOOK"
+      "changeSummary": ""
     },
     {
       "id": "photobooks",
@@ -770,7 +770,7 @@
           "CUSTOM LUGGAGE TAG"
         ]
       },
-      "changeSummary": "AT: disabled 90x60 cm POSTER NL: disabled POSTER 91x61 CM BE: disabled POSTER 91x61 CM"
+      "changeSummary": ""
     },
     {
       "id": "photo-tiles",
@@ -1127,7 +1127,7 @@
           "Photo Standees"
         ]
       },
-      "changeSummary": "AT: disabled 90x60 cm POSTER NL: disabled POSTER 91x61 CM BE: disabled POSTER 91x61 CM"
+      "changeSummary": ""
     },
     {
       "id": "photo-art",
@@ -1466,7 +1466,7 @@
           "WOODEN HEART EASEL"
         ]
       },
-      "changeSummary": "No notable changes."
+      "changeSummary": ""
     },
     {
       "id": "freeprints-cards",
@@ -1517,7 +1517,7 @@
           "PHOTO WATER BOTTLE"
         ]
       },
-      "changeSummary": "UK: disabled HARDCOVER PHOTO BOOK"
+      "changeSummary": ""
     },
     {
       "id": "ink-cards",
@@ -1570,7 +1570,7 @@
           "PET PORTRAIT CANVAS"
         ]
       },
-      "changeSummary": "No notable changes."
+      "changeSummary": ""
     }
   ]
 }
