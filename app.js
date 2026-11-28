@@ -64,6 +64,7 @@ function render(data, els) {
   }
 
   els.boardsEl.innerHTML = apps.map(renderApp).join("");
+  setupRegionScrollControls(els.boardsEl);
 }
 
 function renderApp(app) {
@@ -74,10 +75,47 @@ function renderApp(app) {
 
   return `
     <article class="app-block" id="${id}">
-      <h3>${escapeHtml(app.name || app.id || "App")}</h3>
-      <div class="region-grid">${cards}</div>
+      <div class="app-block-head">
+        <h3>${escapeHtml(app.name || app.id || "App")}</h3>
+        <div class="region-scroll-controls">
+          <button type="button" class="region-scroll-btn" data-dir="-1" aria-label="Scroll regions left">‹</button>
+          <button type="button" class="region-scroll-btn" data-dir="1" aria-label="Scroll regions right">›</button>
+        </div>
+      </div>
+      <div class="region-scroll" tabindex="0" aria-label="${escapeHtml(app.name || "App")} regions">
+        <div class="region-grid">${cards}</div>
+      </div>
     </article>
   `;
+}
+
+function setupRegionScrollControls(root) {
+  root.querySelectorAll(".app-block").forEach((block) => {
+    const scroller = block.querySelector(".region-scroll");
+    if (!scroller) return;
+
+    const syncButtons = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      const atStart = scroller.scrollLeft <= 2;
+      const atEnd = scroller.scrollLeft >= max - 2;
+      block.querySelectorAll(".region-scroll-btn").forEach((btn) => {
+        const dir = Number(btn.dataset.dir);
+        btn.disabled = max <= 0 || (dir < 0 ? atStart : atEnd);
+      });
+    };
+
+    block.querySelectorAll(".region-scroll-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dir = Number(btn.dataset.dir) || 1;
+        const amount = Math.max(scroller.clientWidth * 0.75, 180);
+        scroller.scrollBy({ left: dir * amount, behavior: "smooth" });
+      });
+    });
+
+    scroller.addEventListener("scroll", syncButtons, { passive: true });
+    window.addEventListener("resize", syncButtons);
+    syncButtons();
+  });
 }
 
 function renderRegion(region, products) {

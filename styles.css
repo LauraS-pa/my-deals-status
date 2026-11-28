@@ -145,31 +145,89 @@ body {
   margin-top: 0.35rem;
 }
 
+.app-block-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.55rem;
+}
+
 .app-block h3 {
-  margin: 0 0 0.7rem;
+  margin: 0;
   font-family: var(--display);
   font-size: 1.35rem;
   font-weight: 600;
+}
+
+.region-scroll-controls {
+  display: inline-flex;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.region-scroll-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 160ms ease, border-color 160ms ease, opacity 160ms ease;
+}
+
+.region-scroll-btn:hover:not(:disabled),
+.region-scroll-btn:focus-visible:not(:disabled) {
+  border-color: #b7c4d6;
+  background: #f3f6fa;
+  outline: none;
+}
+
+.region-scroll-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Flip so the scrollbar sits above the region cards. */
+.region-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 0.15rem;
+  transform: scaleY(-1);
+  scrollbar-width: auto;
+  scrollbar-color: #9aa8ba transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.region-scroll::-webkit-scrollbar {
+  height: 12px;
+}
+
+.region-scroll::-webkit-scrollbar-track {
+  background: #e8edf4;
+  border-radius: 999px;
+}
+
+.region-scroll::-webkit-scrollbar-thumb {
+  background: #9aa8ba;
+  border-radius: 999px;
+  border: 2px solid #e8edf4;
+}
+
+.region-scroll::-webkit-scrollbar-thumb:hover {
+  background: #7f8fa3;
 }
 
 .region-grid {
   display: flex;
   flex-wrap: nowrap;
   gap: 0.7rem;
-  overflow-x: auto;
-  overflow-y: hidden;
   padding-bottom: 0.55rem;
   scroll-snap-type: x proximity;
-  -webkit-overflow-scrolling: touch;
-}
-
-.region-grid::-webkit-scrollbar {
-  height: 8px;
-}
-
-.region-grid::-webkit-scrollbar-thumb {
-  background: #c5ceda;
-  border-radius: 999px;
+  transform: scaleY(-1);
 }
 
 .region-card {
