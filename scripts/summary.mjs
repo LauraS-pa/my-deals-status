@@ -14,11 +14,6 @@ function describeRegionChanges(region, prevList, nextList) {
   const enabled = nextList.filter((name) => !prevSet.has(name));
   const disabled = prevList.filter((name) => !nextSet.has(name));
 
-  const prevCommon = prevList.filter((name) => nextSet.has(name));
-  const nextCommon = nextList.filter((name) => prevSet.has(name));
-  const sortChanged =
-    prevCommon.length > 1 && prevCommon.join("\0") !== nextCommon.join("\0");
-
   const parts = [];
   if (enabled.length) {
     parts.push(`enabled ${sampleNames(enabled)}`);
@@ -26,15 +21,12 @@ function describeRegionChanges(region, prevList, nextList) {
   if (disabled.length) {
     parts.push(`disabled ${sampleNames(disabled)}`);
   }
-  if (sortChanged) {
-    parts.push("sort order changed");
-  }
 
   if (!parts.length) return null;
   return `${region}: ${parts.join("; ")}`;
 }
 
-/** Build a short per-app change summary (enabled / disabled / sort). */
+/** Build a short per-app change summary (enabled / disabled only). */
 export function buildAppChangeSummary(prevApp, nextApp, { isBaseline = false } = {}) {
   if (isBaseline || !prevApp) {
     const liveCount = Object.values(nextApp.live || {}).reduce(

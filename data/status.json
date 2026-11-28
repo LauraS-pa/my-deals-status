@@ -1,5 +1,3955 @@
 {
   "lastChecked": "2026-11-28T00:54:32.453Z",
+  "products": [
+    {
+      "name": "10\" PHOTO PLATE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "11x14 WALL FRAME",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "14x11 WALL FRAME",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "14x18 TOTE BAG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "IE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "IE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "IE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "IE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "18x14 TOTE BAG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "20x30 POSTER",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "CA"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "50x60 Signature Style Plush Blanket",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACRYLIC PHOTO BLOCK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACRYLIC PHOTO MAGNET",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ACRYLIC PHOTO PANEL",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "BLACK FRAMES",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CHRISTMAS PHOTO CARDS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "COLOR CHANGING MUG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "COLOUR CHANGING MUG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM BAUBLE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM BEACH TOWEL",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM BIG HEAD™ CUT-OUT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM CLEAR HOLIDAY ORNAMENT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM CUTOUT STICKERS",
+      "placements": [
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM LUGGAGE TAG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM MOUSE MAT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM MOUSE PAD",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM MUG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM NOTE CUBE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM NOTEBOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHONE CASES",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO APRON",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO BASEBALL HAT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO CALENDAR",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO CUSHION",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO HAT",
+      "placements": [
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO MUG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO NECKLACE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO NOTEBOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO PILLOW",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO SOCKS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO T-SHIRT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM PHOTO TEDDY BEAR GRAM",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM POTHOLDER",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM RETURN ADDRESS STAMP",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM STICKERS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM STORAGE BOX​",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM STORAGE BOX",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "IE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM WOOD HOLIDAY ORNAMENT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOM WRAPPING PAPER",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FOTODEKEN",
+      "placements": [
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "NL",
+            "BE"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HEART-SHAPED PHOTO MAGNET SET",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "HOLIDAY PHOTO CARDS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LASER-CUT PHOTO ORNAMENT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MAGNETIC PHOTO STRIP SET",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALISED KID’S COLOURING BOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALISED NIGHT BEFORE CHRISTMAS BOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "FR"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALISED STORYBOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALIZED KID’S COLORING BOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALIZED NIGHT BEFORE CHRISTMAS BOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PERSONALIZED STORYBOOK",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PET PORTRAIT CANVAS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO BLANKET",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO BOTTLE OPENER",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO CANVAS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO COASTERS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO EASEL",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO GLASS CHOPPING BOARD",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO KEYCHAIN",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO KEYRING",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO MAGNET SET",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO PLAYING CARDS",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO PUZZLE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Photo Standees",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO STANDOUT",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO TEA TOWEL",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "PHOTO WATER BOTTLE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "REUSABLE GROCERY BAG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SCHOOL PHOTO BUNDLE",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "SIMPLE MODERN 40 OZ TUMBLER",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "TOTE BAG",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "WOODEN HEART EASEL",
+      "placements": [
+        {
+          "appId": "freeprints",
+          "appName": "FreePrints",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photobooks",
+          "appName": "Photobooks",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE",
+            "CA"
+          ]
+        },
+        {
+          "appId": "photo-tiles",
+          "appName": "Photo Tiles",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "photo-art",
+          "appName": "Photo Art",
+          "regions": [
+            "US",
+            "UK",
+            "IE",
+            "FR",
+            "IT",
+            "ES",
+            "DE",
+            "AT",
+            "NL",
+            "BE"
+          ]
+        },
+        {
+          "appId": "freeprints-cards",
+          "appName": "FreePrints Cards",
+          "regions": [
+            "UK"
+          ]
+        },
+        {
+          "appId": "ink-cards",
+          "appName": "Ink Cards",
+          "regions": [
+            "US"
+          ]
+        }
+      ]
+    }
+  ],
   "apps": [
     {
       "id": "freeprints",
