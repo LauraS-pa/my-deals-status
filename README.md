@@ -1,6 +1,6 @@
 # My Deals Status
 
-Simple visual reference for which **My Deals** products are live in each app and region.
+Simple visual reference for which **My Deals** products are live — listed by product, with the apps and regions where each is active.
 
 ## Live site
 
@@ -19,9 +19,11 @@ Open the URL shown in the terminal (usually `http://localhost:3000`).
 - Live status: [`data/status.json`](data/status.json)
 - Shape / rules: [`data/schema.md`](data/schema.md)
 
+The page reads the derived `products` directory (product → app/region placements). The check script still scrapes per app/region into `apps`, then builds `products` from that.
+
 ## Weekly refresh (self-hosted)
 
-A GitHub Actions workflow runs **Mondays at 11:00 Pacific** on a **self-hosted runner** (VPN / corp network), checks the [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index) API, updates `data/status.json` (including a per-app change summary for enables, disables, and sort changes), and pushes the commit.
+A GitHub Actions workflow runs **Mondays at 11:00 Pacific** on a **self-hosted runner** (VPN / corp network), checks the [My Deals admin](https://fpadminui-us.planetart.com/mydeals/index) API, updates `data/status.json` (product directory plus enable/disable notes), and pushes the commit.
 
 Setup guide: [`docs/self-hosted-runner.md`](docs/self-hosted-runner.md)
 

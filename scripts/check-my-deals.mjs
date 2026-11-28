@@ -16,6 +16,7 @@ import {
   shouldIgnoreProductName,
 } from "./apps.mjs";
 import { assertEuAndUsAuth, resolveUsAuthPath } from "./auth-path.mjs";
+import { buildProductDirectory } from "./products.mjs";
 import { applyAppChangeSummaries } from "./summary.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -418,14 +419,20 @@ async function main() {
       });
     }
 
-    const next = applyAppChangeSummaries(previous, {
+    const withSummaries = applyAppChangeSummaries(previous, {
       lastChecked: new Date().toISOString(),
       apps: nextApps,
     });
+    const next = {
+      lastChecked: withSummaries.lastChecked,
+      products: buildProductDirectory(withSummaries.apps),
+      apps: withSummaries.apps,
+    };
 
     for (const app of next.apps) {
       console.log(`\n${app.name}: ${app.changeSummary}`);
     }
+    console.log(`\nProduct directory: ${next.products.length} products`);
 
     if (dryRun) {
       console.log("Dry run — status.json not written.");

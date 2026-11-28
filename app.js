@@ -30,29 +30,69 @@ function formatChecked(iso) {
   }).format(date);
 }
 
-function appAnchorId(app) {
-  const raw = app.id || app.name || "app";
-  return `app-${String(raw)
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "")}`;
+function letterAnchor(letter) {
+  return `letter-${letter.toLowerCase()}`;
 }
 
-function previewText(text, max = 140) {
-  const clean = String(text || "").replace(/\s+/g, " ").trim();
-  if (clean.length <= max) return clean;
-  const slice = clean.slice(0, max);
-  const breakAt = Math.max(slice.lastIndexOf("; "), slice.lastIndexOf(". "), slice.lastIndexOf(" "));
-  const cut = breakAt > 60 ? slice.slice(0, breakAt) : slice;
-  return `${cut.trim()}…`;
+function productLetter(name) {
+  const ch = String(name || "")
+    .trim()
+    .charAt(0)
+    .toUpperCase();
+  return /[A-Z]/.test(ch) ? ch : "#";
+}
+
+/** Prefer derived products; fall back to building from apps if needed. */
+function productsFromData(data) {
+  if (Array.isArray(data.products) && data.products.length) {
+    return data.products;
+  }
+  return buildProductsClientSide(data.apps || []);
+}
+
+function buildProductsClientSide(apps) {
+  const byKey = new Map();
+  for (const app of apps) {
+    const live = app?.live && typeof app.live === "object" ? app.live : {};
+    for (const [region, list] of Object.entries(live)) {
+      if (!Array.isArray(list)) continue;
+      for (const raw of list) {
+        const name = String(raw ?? "").trim();
+        if (!name) continue;
+        const key = name.toLowerCase().replace(/\s+/g, " ");
+        if (!byKey.has(key)) {
+          byKey.set(key, { name, placements: new Map() });
+        }
+        const entry = byKey.get(key);
+        if (!entry.placements.has(app.id)) {
+          entry.placements.set(app.id, {
+            appId: app.id,
+            appName: app.name || app.id,
+            regions: new Set(),
+          });
+        }
+        entry.placements.get(app.id).regions.add(String(region).toUpperCase());
+      }
+    }
+  }
+  return [...byKey.values()]
+    .map((entry) => ({
+      name: entry.name,
+      placements: [...entry.placements.values()].map((p) => ({
+        appId: p.appId,
+        appName: p.appName,
+        regions: [...p.regions].sort(),
+      })),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
 }
 
 function render(data, els) {
   els.checkedEl.textContent = `Last checked: ${formatChecked(data.lastChecked)}`;
 
-  const apps = Array.isArray(data.apps) ? data.apps : [];
-  if (apps.length === 0) {
-    els.boardsEl.innerHTML = `<p class="empty">No apps in status data.</p>`;
+  const products = productsFromData(data);
+  if (products.length === 0) {
+    els.boardsEl.innerHTML = `<p class="empty">No live products in status data.</p>`;
     if (els.jumpNavEl) {
       els.jumpNavEl.hidden = true;
       els.jumpNavEl.innerHTML = "";
@@ -60,127 +100,64 @@ function render(data, els) {
     return;
   }
 
+  const letters = [];
+  const seen = new Set();
+  for (const product of products) {
+    const letter = productLetter(product.name);
+    if (!seen.has(letter)) {
+      seen.add(letter);
+      letters.push(letter);
+    }
+  }
+
   if (els.jumpNavEl) {
     els.jumpNavEl.hidden = false;
-    els.jumpNavEl.innerHTML = apps
-      .map((app) => {
-        const id = appAnchorId(app);
-        const label = escapeHtml(app.name || app.id || "App");
-        return `<a class="jump-link" href="#${id}">${label}</a>`;
-      })
+    els.jumpNavEl.innerHTML = letters
+      .map(
+        (letter) =>
+          `<a class="jump-link" href="#${letterAnchor(letter)}">${escapeHtml(letter)}</a>`
+      )
       .join("");
   }
 
-  els.boardsEl.innerHTML = apps
-    .map((app) => renderApp(app, data.lastChecked))
-    .join("");
-  setupRegionScrollControls(els.boardsEl);
-}
-
-function renderApp(app, lastChecked) {
-  const regions = Array.isArray(app.regions) ? app.regions : [];
-  const live = app.live && typeof app.live === "object" ? app.live : {};
-  const cards = regions.map((region) => renderRegion(region, live[region])).join("");
-  const id = appAnchorId(app);
-  const summary = String(app.changeSummary || "").replace(/\s+/g, " ").trim();
-  const preview = previewText(summary);
-  const checkedLabel = formatChecked(lastChecked);
-  const needsExpand = Boolean(summary) && preview !== summary;
-
-  const summaryBody = !summary
-    ? ""
-    : needsExpand
-      ? `
-      <details class="app-summary-details">
-        <summary>
-          <span class="app-summary-preview">${escapeHtml(preview)}</span>
-          <span class="app-summary-toggle">Show more</span>
-        </summary>
-        <p class="app-summary-full">${escapeHtml(summary)}</p>
-      </details>
-    `
-      : `<p class="app-summary-full">${escapeHtml(summary)}</p>`;
-
-  return `
-    <article class="app-block" id="${id}">
-      <div class="app-block-inner">
-        <div class="app-block-head">
-          <h3>${escapeHtml(app.name || app.id || "App")}</h3>
-          <div class="region-scroll-controls">
-            <button type="button" class="region-scroll-btn" data-dir="-1" aria-label="Scroll regions left">‹</button>
-            <button type="button" class="region-scroll-btn" data-dir="1" aria-label="Scroll regions right">›</button>
-          </div>
-        </div>
-        <div class="region-scroll" tabindex="0" aria-label="${escapeHtml(app.name || "App")} regions">
-          <div class="region-grid">${cards}</div>
-        </div>
-        <div class="app-summary">
-          <div class="app-summary-top">
-            <h4>Since last check</h4>
-            <p class="app-summary-checked">Last checked: ${escapeHtml(checkedLabel)}</p>
-          </div>
-          ${summaryBody}
-        </div>
-      </div>
-    </article>
-  `;
-}
-
-function setupRegionScrollControls(root) {
-  root.querySelectorAll(".app-block").forEach((block) => {
-    const scroller = block.querySelector(".region-scroll");
-    if (!scroller) return;
-
-    const syncButtons = () => {
-      const max = scroller.scrollWidth - scroller.clientWidth;
-      const atStart = scroller.scrollLeft <= 2;
-      const atEnd = scroller.scrollLeft >= max - 2;
-      block.querySelectorAll(".region-scroll-btn").forEach((btn) => {
-        const dir = Number(btn.dataset.dir);
-        btn.disabled = max <= 0 || (dir < 0 ? atStart : atEnd);
-      });
-    };
-
-    block.querySelectorAll(".region-scroll-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const dir = Number(btn.dataset.dir) || 1;
-        const amount = Math.max(scroller.clientWidth * 0.75, 180);
-        scroller.scrollBy({ left: dir * amount, behavior: "smooth" });
-      });
-    });
-
-    const details = block.querySelector(".app-summary-details");
-    if (details) {
-      const toggle = details.querySelector(".app-summary-toggle");
-      details.addEventListener("toggle", () => {
-        if (toggle) {
-          toggle.textContent = details.open ? "Show less" : "Show more";
-        }
-      });
+  let currentLetter = null;
+  const chunks = [];
+  for (const product of products) {
+    const letter = productLetter(product.name);
+    if (letter !== currentLetter) {
+      currentLetter = letter;
+      chunks.push(
+        `<h3 class="letter-heading" id="${letterAnchor(letter)}">${escapeHtml(letter)}</h3>`
+      );
     }
+    chunks.push(renderProduct(product));
+  }
 
-    scroller.addEventListener("scroll", syncButtons, { passive: true });
-    window.addEventListener("resize", syncButtons);
-    syncButtons();
-  });
+  els.boardsEl.innerHTML = `<div class="product-list">${chunks.join("")}</div>`;
 }
 
-function renderRegion(region, products) {
-  const list = Array.isArray(products) ? products.filter(Boolean) : [];
-  const hasLive = list.length > 0;
-  const body = hasLive
-    ? `<ol class="products">${list
-        .map((name) => `<li>${escapeHtml(name)}</li>`)
-        .join("")}</ol>`
-    : `<p class="empty">None live</p>`;
+function renderProduct(product) {
+  const placements = Array.isArray(product.placements) ? product.placements : [];
+  const rows = placements
+    .map((placement) => {
+      const regions = Array.isArray(placement.regions) ? placement.regions : [];
+      const chips = regions
+        .map((code) => `<span class="region-chip">${escapeHtml(code)}</span>`)
+        .join("");
+      return `
+        <div class="placement-row">
+          <span class="placement-app">${escapeHtml(placement.appName || placement.appId || "App")}</span>
+          <span class="placement-regions">${chips || `<span class="empty">None</span>`}</span>
+        </div>
+      `;
+    })
+    .join("");
 
   return `
-    <div class="region-card${hasLive ? " has-live" : ""}">
-      <p class="region-code"><span class="dot" aria-hidden="true"></span>${escapeHtml(
-        region
-      )}</p>
-      ${body}
-    </div>
+    <article class="product-block">
+      <h4 class="product-name">${escapeHtml(product.name || "Untitled")}</h4>
+      <div class="placement-list">${rows}</div>
+    </article>
   `;
 }
 
