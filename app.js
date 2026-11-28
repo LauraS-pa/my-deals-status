@@ -34,57 +34,36 @@ function letterAnchor(letter) {
   return `letter-${letter.toLowerCase()}`;
 }
 
+/** Letter for A–Z jump links — mirrors server sort (ignore photo/custom/etc.). */
+function productSortKey(name) {
+  return String(name || "")
+    .toLowerCase()
+    .replace(/[\u200B-\u200D\uFEFF]/g, "")
+    .replace(/\bcolour\b/g, "color")
+    .replace(/\bcolouring\b/g, "coloring")
+    .replace(/\bpersonalised\b/g, "personalized")
+    .replace(/\bkeyring\b/g, "keychain")
+    .replace(/\bchristmas photo cards\b/g, "holiday photo cards")
+    .replace(/\bchristmas cards\b/g, "holiday cards")
+    .replace(/\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?\b/g, " ")
+    .replace(/\b\d+(?:\.\d+)?\s*["″]/g, " ")
+    .replace(/\b(?:photos?|personalized|personalised|custom)\b/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function productLetter(name) {
-  const ch = String(name || "")
-    .trim()
-    .charAt(0)
-    .toUpperCase();
+  const key = productSortKey(name);
+  const ch = (key || String(name || "").trim()).charAt(0).toUpperCase();
   return /[A-Z]/.test(ch) ? ch : "#";
 }
 
-/** Prefer derived products; fall back to building from apps if needed. */
+/** Prefer derived products from the check script. */
 function productsFromData(data) {
   if (Array.isArray(data.products) && data.products.length) {
     return data.products;
   }
-  return buildProductsClientSide(data.apps || []);
-}
-
-function buildProductsClientSide(apps) {
-  const byKey = new Map();
-  for (const app of apps) {
-    const live = app?.live && typeof app.live === "object" ? app.live : {};
-    for (const [region, list] of Object.entries(live)) {
-      if (!Array.isArray(list)) continue;
-      for (const raw of list) {
-        const name = String(raw ?? "").trim();
-        if (!name) continue;
-        const key = name.toLowerCase().replace(/\s+/g, " ");
-        if (!byKey.has(key)) {
-          byKey.set(key, { name, placements: new Map() });
-        }
-        const entry = byKey.get(key);
-        if (!entry.placements.has(app.id)) {
-          entry.placements.set(app.id, {
-            appId: app.id,
-            appName: app.name || app.id,
-            regions: new Set(),
-          });
-        }
-        entry.placements.get(app.id).regions.add(String(region).toUpperCase());
-      }
-    }
-  }
-  return [...byKey.values()]
-    .map((entry) => ({
-      name: entry.name,
-      placements: [...entry.placements.values()].map((p) => ({
-        appId: p.appId,
-        appName: p.appName,
-        regions: [...p.regions].sort(),
-      })),
-    }))
-    .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
+  return [];
 }
 
 function render(data, els) {
