@@ -48,7 +48,9 @@ function letterAnchor(letter) {
 
 /** Letter for A–Z jump links — mirrors server sort (ignore photo/custom/etc.). */
 function productSortKey(name) {
-  const core = String(name || "").split(",")[0];
+  const core = String(name || "")
+    .replace(/\s*\([^)]*\)\s*$/g, "")
+    .split(",")[0];
   return core
     .toLowerCase()
     .replace(/[\u200B-\u200D\uFEFF]/g, "")
@@ -57,6 +59,7 @@ function productSortKey(name) {
     .replace(/\bpersonalised\b/g, "personalized")
     .replace(/\bkeyring\b/g, "keychain")
     .replace(/\bfotodeken\b/g, "photo blanket")
+    .replace(/\bbauble\b/g, "wood holiday ornament")
     .replace(/\bchristmas photo cards\b/g, "holiday photo cards")
     .replace(/\bchristmas cards\b/g, "holiday cards")
     .replace(/\b\d+(?:\.\d+)?\s*[x×]\s*\d+(?:\.\d+)?\b/g, " ")
