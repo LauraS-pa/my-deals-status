@@ -42,3 +42,5 @@
 - UK / EU regions: https://fpadminui-eu.planetart.com/mydeals/index (`admin-fpeu`)
 
 Products with **failed** or **deactivated** status are omitted. Lists keep admin order (shown numbered on the site).
+
+One language per region (US/CA English, BE French, others local default). Internal codes like `fg_gift_monthly` and `PC MyDeals…` rows are omitted.

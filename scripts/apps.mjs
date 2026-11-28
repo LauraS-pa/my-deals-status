@@ -31,6 +31,41 @@ export function adminForRegion(region) {
   return US_CA.has(String(region).toUpperCase()) ? ADMIN_US : ADMIN_EU;
 }
 
+/**
+ * Preferred language matchers per region (one language only).
+ * US/CA → English, BE → French; others use the local default tongue.
+ */
+export const REGION_LANG_MATCHERS = {
+  US: ["en-US", "en", "english"],
+  CA: ["en-CA", "en-US", "en", "english"],
+  BE: ["fr-BE", "fr-FR", "fr", "french"],
+  FR: ["fr-FR", "fr", "french"],
+  IT: ["it-IT", "it", "italian"],
+  IE: ["en-IE", "en-GB", "en-US", "en", "english"],
+  ES: ["es-ES", "es", "spanish"],
+  NL: ["nl-NL", "nl", "dutch"],
+  DE: ["de-DE", "de", "german"],
+  AT: ["de-AT", "de-DE", "de", "german"],
+  UK: ["en-GB", "en-UK", "en", "english"],
+};
+
+export function pickLang(langList, region, apiDefaultLang) {
+  const matchers = REGION_LANG_MATCHERS[String(region).toUpperCase()] || [];
+  const matched = resolveOption(langList, matchers);
+  if (matched) return matched.value;
+  if (apiDefaultLang) return apiDefaultLang;
+  return langList?.[0]?.value || "";
+}
+
+/** Drop internal codes (fg_gift_monthly) and PC MyDeals promo rows. */
+export function shouldIgnoreProductName(name) {
+  const n = String(name ?? "").trim();
+  if (!n) return true;
+  if (/^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$/i.test(n)) return true;
+  if (/pc\s*my\s*deals/i.test(n)) return true;
+  return false;
+}
+
 export const APPS = [
   {
     id: "freeprints",

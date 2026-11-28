@@ -10,7 +10,9 @@ import {
   LIVE_STATUS,
   adminForRegion,
   isExcludedProduct,
+  pickLang,
   resolveOption,
+  shouldIgnoreProductName,
 } from "./apps.mjs";
 import { assertEuAndUsAuth, resolveUsAuthPath } from "./auth-path.mjs";
 import { buildChangeSummary } from "./summary.mjs";
@@ -177,7 +179,7 @@ async function loadFilters(page, context, admin) {
   return extractFilter(filterRes.body);
 }
 
-/** Keep admin list order; skip failed/deactivated; de-dupe by name. */
+/** Keep admin list order; skip failed/deactivated/noise; de-dupe by name. */
 function productsFromList(list) {
   const names = [];
   const seen = new Set();
@@ -185,12 +187,36 @@ function productsFromList(list) {
     if (isExcludedProduct(row)) continue;
     const name = productName(row);
     if (!name) continue;
-    const trimmed = String(name).trim();
-    if (!trimmed || seen.has(trimmed)) continue;
+    const trimmed = String(name).trim().replace(/\s+/g, " ");
+    if (!trimmed || shouldIgnoreProductName(trimmed) || seen.has(trimmed)) {
+      continue;
+    }
     seen.add(trimmed);
     names.push(trimmed);
   }
   return names;
+}
+
+async function resolveLang(page, context, admin, baseParam, region) {
+  const filterRes = await apiGetWithFallback(
+    page,
+    context,
+    admin.apiBase,
+    "/mydeals/filterList",
+    { ...baseParam, region, lang: "" }
+  );
+  if (!filterRes.ok) {
+    console.warn(
+      `filterList for lang (${admin.id}/${region}) failed (${filterRes.status}); using empty lang`
+    );
+    return "";
+  }
+  const filters = extractFilter(filterRes.body);
+  const apiDefault =
+    filterRes.body?.data?.data?.lang ??
+    filterRes.body?.data?.lang ??
+    "";
+  return pickLang(filters.langList, region, apiDefault);
 }
 
 async function fetchLiveFor(page, context, admin, searchParam) {
@@ -278,17 +304,24 @@ async function main() {
           continue;
         }
 
-        const searchParam = {
+        const baseParam = {
           source: session.source,
           site: siteOpt.value,
           region: regionOpt.value,
           product: "",
           status: session.liveStatus,
-          lang: "",
         };
+        const lang = await resolveLang(
+          session.page,
+          session.context,
+          admin,
+          baseParam,
+          regionOpt.value
+        );
+        const searchParam = { ...baseParam, lang };
 
         process.stdout.write(
-          `Checking ${app.name} / ${region} (${admin.id.toUpperCase()})… `
+          `Checking ${app.name} / ${region} lang=${lang || "—"} (${admin.id.toUpperCase()})… `
         );
         const products = await fetchLiveFor(
           session.page,
