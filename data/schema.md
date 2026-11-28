@@ -31,12 +31,12 @@
 
 ## Apps and regions (canonical)
 
-| App | Regions |
+| App | Regions (display order) |
 |-----|---------|
-| FreePrints | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
-| Photobooks | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
-| Photo Tiles | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
-| Photo Art | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
+| FreePrints | US, UK, IE, FR, IT, ES, DE, AT, NL, BE, CA |
+| Photobooks | US, UK, IE, FR, IT, ES, DE, AT, NL, BE, CA |
+| Photo Tiles | US, UK, IE, FR, IT, ES, DE, AT, NL, BE |
+| Photo Art | US, UK, IE, FR, IT, ES, DE, AT, NL, BE |
 | FreePrints Cards | UK |
 | Ink Cards | US |
 

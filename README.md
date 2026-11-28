@@ -36,9 +36,9 @@ npm run check    # manual refresh
 
 | App | Regions |
 |-----|---------|
-| FreePrints | US, CA, FR, IT, IE, ES, NL, DE, AT, BE |
-| Photobooks | same |
-| Photo Tiles | same |
-| Photo Art | same |
+| FreePrints | US, UK, IE, FR, IT, ES, DE, AT, NL, BE, CA |
+| Photobooks | US, UK, IE, FR, IT, ES, DE, AT, NL, BE, CA |
+| Photo Tiles | US, UK, IE, FR, IT, ES, DE, AT, NL, BE |
+| Photo Art | US, UK, IE, FR, IT, ES, DE, AT, NL, BE |
 | FreePrints Cards | UK |
 | Ink Cards | US |

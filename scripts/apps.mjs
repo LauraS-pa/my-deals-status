@@ -113,30 +113,57 @@ export function shouldIgnoreProductName(name) {
   return false;
 }
 
+/** Display order for multi-country apps. CA only on FreePrints + Photobooks. */
+const REGIONS_WITH_CA = [
+  "US",
+  "UK",
+  "IE",
+  "FR",
+  "IT",
+  "ES",
+  "DE",
+  "AT",
+  "NL",
+  "BE",
+  "CA",
+];
+const REGIONS_NO_CA = [
+  "US",
+  "UK",
+  "IE",
+  "FR",
+  "IT",
+  "ES",
+  "DE",
+  "AT",
+  "NL",
+  "BE",
+];
+
 export const APPS = [
   {
     id: "freeprints",
     name: "FreePrints",
     siteMatchers: ["fp", "freeprints", "free prints"],
-    regions: ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+    regions: [...REGIONS_WITH_CA],
   },
   {
     id: "photobooks",
     name: "Photobooks",
     siteMatchers: ["pb", "photobook", "photobooks", "photo book"],
-    regions: ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+    regions: [...REGIONS_WITH_CA],
   },
   {
     id: "photo-tiles",
     name: "Photo Tiles",
     siteMatchers: ["pt", "tile", "tiles", "photo tiles", "photo tile"],
-    regions: ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+    regions: [...REGIONS_NO_CA],
   },
   {
     id: "photo-art",
     name: "Photo Art",
     siteMatchers: ["pa", "art", "photo art", "photoart", "artcards", "art cards"],
-    regions: ["US", "CA", "FR", "IT", "IE", "ES", "NL", "DE", "AT", "BE"],
+    regions: [...REGIONS_NO_CA],
   },
   {
     id: "freeprints-cards",
