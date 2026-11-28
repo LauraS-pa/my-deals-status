@@ -41,11 +41,6 @@ const UK_ALIAS_RULES = [
     usTest: /\bpillow\b/i,
     label: "Cushion",
   },
-  {
-    ukTest: /\bfotodeken\b/i,
-    usTest: /\b(?:photo )?blanket\b/i,
-    label: "Fotodeken",
-  },
 ];
 
 function sortRegions(regions) {
