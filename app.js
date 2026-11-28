@@ -34,6 +34,15 @@ function appAnchorId(app) {
     .replace(/^-|-$/g, "")}`;
 }
 
+function previewText(text, max = 140) {
+  const clean = String(text || "").replace(/\s+/g, " ").trim();
+  if (clean.length <= max) return clean;
+  const slice = clean.slice(0, max);
+  const breakAt = Math.max(slice.lastIndexOf("; "), slice.lastIndexOf(". "), slice.lastIndexOf(" "));
+  const cut = breakAt > 60 ? slice.slice(0, breakAt) : slice;
+  return `${cut.trim()}…`;
+}
+
 function render(data, els) {
   els.checkedEl.textContent = `Last checked: ${formatChecked(data.lastChecked)}`;
 
@@ -58,32 +67,54 @@ function render(data, els) {
       .join("");
   }
 
-  els.boardsEl.innerHTML = apps.map(renderApp).join("");
+  els.boardsEl.innerHTML = apps
+    .map((app) => renderApp(app, data.lastChecked))
+    .join("");
   setupRegionScrollControls(els.boardsEl);
 }
 
-function renderApp(app) {
+function renderApp(app, lastChecked) {
   const regions = Array.isArray(app.regions) ? app.regions : [];
   const live = app.live && typeof app.live === "object" ? app.live : {};
   const cards = regions.map((region) => renderRegion(region, live[region])).join("");
   const id = appAnchorId(app);
   const summary = app.changeSummary || "No notable changes.";
+  const preview = previewText(summary);
+  const checkedLabel = formatChecked(lastChecked);
+  const needsExpand = preview !== summary.replace(/\s+/g, " ").trim();
+
+  const summaryBody = needsExpand
+    ? `
+      <details class="app-summary-details">
+        <summary>
+          <span class="app-summary-preview">${escapeHtml(preview)}</span>
+          <span class="app-summary-toggle">Show more</span>
+        </summary>
+        <p class="app-summary-full">${escapeHtml(summary)}</p>
+      </details>
+    `
+    : `<p class="app-summary-full">${escapeHtml(summary)}</p>`;
 
   return `
     <article class="app-block" id="${id}">
-      <div class="app-block-head">
-        <h3>${escapeHtml(app.name || app.id || "App")}</h3>
-        <div class="region-scroll-controls">
-          <button type="button" class="region-scroll-btn" data-dir="-1" aria-label="Scroll regions left">‹</button>
-          <button type="button" class="region-scroll-btn" data-dir="1" aria-label="Scroll regions right">›</button>
+      <div class="app-block-inner">
+        <div class="app-block-head">
+          <h3>${escapeHtml(app.name || app.id || "App")}</h3>
+          <div class="region-scroll-controls">
+            <button type="button" class="region-scroll-btn" data-dir="-1" aria-label="Scroll regions left">‹</button>
+            <button type="button" class="region-scroll-btn" data-dir="1" aria-label="Scroll regions right">›</button>
+          </div>
         </div>
-      </div>
-      <div class="region-scroll" tabindex="0" aria-label="${escapeHtml(app.name || "App")} regions">
-        <div class="region-grid">${cards}</div>
-      </div>
-      <div class="app-summary">
-        <h4>Since last check</h4>
-        <p>${escapeHtml(summary)}</p>
+        <div class="region-scroll" tabindex="0" aria-label="${escapeHtml(app.name || "App")} regions">
+          <div class="region-grid">${cards}</div>
+        </div>
+        <div class="app-summary">
+          <div class="app-summary-top">
+            <h4>Since last check</h4>
+            <p class="app-summary-checked">Last checked: ${escapeHtml(checkedLabel)}</p>
+          </div>
+          ${summaryBody}
+        </div>
       </div>
     </article>
   `;
@@ -111,6 +142,16 @@ function setupRegionScrollControls(root) {
         scroller.scrollBy({ left: dir * amount, behavior: "smooth" });
       });
     });
+
+    const details = block.querySelector(".app-summary-details");
+    if (details) {
+      const toggle = details.querySelector(".app-summary-toggle");
+      details.addEventListener("toggle", () => {
+        if (toggle) {
+          toggle.textContent = details.open ? "Show less" : "Show more";
+        }
+      });
+    }
 
     scroller.addEventListener("scroll", syncButtons, { passive: true });
     window.addEventListener("resize", syncButtons);

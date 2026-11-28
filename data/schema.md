@@ -47,4 +47,4 @@
 
 Products with **failed** or **deactivated** status are omitted. Lists keep admin order (shown numbered on the site).
 
-US/CA use English catalogs. EU countries only expose local language codes in admin; live sets are read locally then titled with IE/UK English equivalents by product id. Internal codes like `fg_gift_monthly`, `PC MyDeals…` rows, and bare app names (e.g. `PHOTO TILES`, `PREMIUM WALL ART`, `PHOTO GREETING CARD`) are omitted.
+US/CA use English catalogs. EU countries only expose local language codes in admin; live sets are read locally then titled with IE/UK English equivalents by product id. Internal codes like `fg_gift_monthly`, `PC MyDeals…` rows, and bare app names (e.g. `PHOTO TILES`, `PREMIUM WALL ART`, `PHOTO GREETING CARD`) are omitted. Cross-app promos are omitted (e.g. Hardcover Photo Book outside Photobooks, Photo Tiles outside that app). Poster products are omitted except in CA.

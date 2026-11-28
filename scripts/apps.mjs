@@ -103,13 +103,45 @@ export function needsEnglishTitleMap(region) {
   return !US_CA.has(code) && code !== "UK" && code !== "IE";
 }
 
-/** Drop internal codes, PC MyDeals rows, and bare app/category names. */
-export function shouldIgnoreProductName(name) {
+/**
+ * Drop internal codes, PC MyDeals rows, bare app names, and cross-app promos.
+ * @param {string} name
+ * @param {{ appId?: string, region?: string }} [ctx]
+ */
+export function shouldIgnoreProductName(name, ctx = {}) {
   const n = String(name ?? "").trim();
   if (!n) return true;
   if (/^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$/i.test(n)) return true;
   if (/pc\s*my\s*deals/i.test(n)) return true;
-  if (APP_NAME_TITLES.has(normalizeLabel(n))) return true;
+
+  const label = normalizeLabel(n);
+  if (APP_NAME_TITLES.has(label)) return true;
+
+  const appId = ctx.appId || "";
+  const region = String(ctx.region || "").toUpperCase();
+
+  // Photo Tiles products only belong in the Photo Tiles app.
+  if (appId !== "photo-tiles" && /\bphoto\s*tiles?\b/.test(label)) {
+    return true;
+  }
+
+  // Photobooks products (e.g. Hardcover Photo Book) outside Photobooks.
+  if (
+    appId !== "photobooks" &&
+    (/\bhardcover\s*photo\s*book\b/.test(label) ||
+      /\bsoftcover\s*photo\s*book\b/.test(label) ||
+      /\bphoto\s*books?\b/.test(label) ||
+      label === "photobooks" ||
+      label === "photobook")
+  ) {
+    return true;
+  }
+
+  // Photo Poster / poster SKUs — keep only in CA.
+  if (region && region !== "CA" && /\bposter\b/.test(label)) {
+    return true;
+  }
+
   return false;
 }
 

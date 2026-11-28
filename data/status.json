@@ -1,5 +1,5 @@
 {
-  "lastChecked": "2026-11-28T00:44:18.321Z",
+  "lastChecked": "2026-11-28T00:54:32.453Z",
   "apps": [
     {
       "id": "freeprints",
@@ -66,7 +66,6 @@
           "PERSONALIZED STORYBOOK",
           "CUSTOM BIG HEAD™ CUT-OUT",
           "50x60 Signature Style Plush Blanket",
-          "HARDCOVER PHOTO BOOK",
           "CUSTOM POTHOLDER",
           "SIMPLE MODERN 40 OZ TUMBLER"
         ],
@@ -101,7 +100,6 @@
           "PHOTO BLANKET",
           "COLOUR CHANGING MUG",
           "CUSTOM PHOTO SOCKS",
-          "HARDCOVER PHOTO BOOK",
           "CUSTOM PHOTO NOTEBOOK",
           "PHOTO GLASS CHOPPING BOARD",
           "18x14 TOTE BAG",
@@ -392,7 +390,7 @@
           "CUSTOM POTHOLDER"
         ]
       },
-      "changeSummary": "UK: enabled CUSTOM PHOTO CALENDAR; CHRISTMAS PHOTO CARDS; CUSTOM BAUBLE; PHOTO MAGNET SET; PHOTO CANVAS; MAGNETIC PHOTO STRIP SET; …"
+      "changeSummary": "US: disabled HARDCOVER PHOTO BOOK UK: disabled HARDCOVER PHOTO BOOK"
     },
     {
       "id": "photobooks",
@@ -686,7 +684,6 @@
           "PHOTO GLASS CHOPPING BOARD",
           "PHOTO MAGNET SET",
           "PET PORTRAIT CANVAS",
-          "90x60 cm POSTER",
           "WOODEN HEART EASEL"
         ],
         "NL": [
@@ -712,7 +709,6 @@
           "ACRYLIC PHOTO PANEL",
           "PHOTO KEYRING",
           "MAGNETIC PHOTO STRIP SET",
-          "POSTER 91x61 CM",
           "ACRYLIC PHOTO BLOCK",
           "18x14 TOTE BAG",
           "PHOTO BLANKET",
@@ -723,7 +719,6 @@
         "BE": [
           "PHOTO BLANKET",
           "PHOTO KEYRING",
-          "POSTER 91x61 CM",
           "MAGNETIC PHOTO STRIP SET",
           "CUSTOM PHONE CASES",
           "COLOUR CHANGING MUG",
@@ -775,7 +770,7 @@
           "CUSTOM LUGGAGE TAG"
         ]
       },
-      "changeSummary": "UK: enabled CUSTOM PHOTO CALENDAR; CUSTOM BAUBLE; CHRISTMAS PHOTO CARDS; MAGNETIC PHOTO STRIP SET; Photo Standees; PHOTO CANVAS; …"
+      "changeSummary": "AT: disabled 90x60 cm POSTER NL: disabled POSTER 91x61 CM BE: disabled POSTER 91x61 CM"
     },
     {
       "id": "photo-tiles",
@@ -1068,13 +1063,11 @@
           "PHOTO PLAYING CARDS",
           "18x14 TOTE BAG",
           "CUSTOM PHOTO T-SHIRT",
-          "90x60 cm POSTER",
           "ACRYLIC PHOTO BLOCK",
           "WOODEN HEART EASEL"
         ],
         "NL": [
           "Photo Standees",
-          "POSTER 91x61 CM",
           "MAGNETIC PHOTO STRIP SET",
           "14x11 WALL FRAME",
           "HEART-SHAPED PHOTO MAGNET SET",
@@ -1112,7 +1105,6 @@
           "CUSTOM PHOTO MUG",
           "PHOTO CANVAS",
           "PHOTO MAGNET SET",
-          "POSTER 91x61 CM",
           "18x14 TOTE BAG",
           "ACRYLIC PHOTO BLOCK",
           "14x11 WALL FRAME",
@@ -1135,7 +1127,7 @@
           "Photo Standees"
         ]
       },
-      "changeSummary": "CA: disabled ACRYLIC PHOTO MAGNET; CUSTOM CLEAR HOLIDAY ORNAMENT; PHOTO COASTERS; COLOUR CHANGING MUG; PHOTO EASEL; PERSONALIZED STORYBOOK; … UK: enabled CUSTOM PHOTO CALENDAR; CUSTOM BAUBLE; CHRISTMAS PHOTO CARDS; MAGNETIC PHOTO STRIP SET; Photo Standees; PHOTO CANVAS; …"
+      "changeSummary": "AT: disabled 90x60 cm POSTER NL: disabled POSTER 91x61 CM BE: disabled POSTER 91x61 CM"
     },
     {
       "id": "photo-art",
@@ -1474,7 +1466,7 @@
           "WOODEN HEART EASEL"
         ]
       },
-      "changeSummary": "CA: disabled 5x7 arcylic_panel; HOLIDAY PHOTO CARDS; CUSTOM PHOTO CALENDAR; LASER-CUT PHOTO ORNAMENT; MAGNETIC PHOTO STRIP SET; HEART-SHAPED PHOTO MAGNET SET; … UK: enabled CUSTOM BAUBLE; Photo Standees; MAGNETIC PHOTO STRIP SET; ACRYLIC PHOTO PANEL; PET PORTRAIT CANVAS; CUSTOM PHOTO T-SHIRT; …"
+      "changeSummary": "No notable changes."
     },
     {
       "id": "freeprints-cards",
@@ -1514,7 +1506,6 @@
           "PHOTO BLANKET",
           "COLOUR CHANGING MUG",
           "CUSTOM PHOTO SOCKS",
-          "HARDCOVER PHOTO BOOK",
           "CUSTOM PHOTO NOTEBOOK",
           "PHOTO GLASS CHOPPING BOARD",
           "18x14 TOTE BAG",
@@ -1526,7 +1517,7 @@
           "PHOTO WATER BOTTLE"
         ]
       },
-      "changeSummary": "No notable changes."
+      "changeSummary": "UK: disabled HARDCOVER PHOTO BOOK"
     },
     {
       "id": "ink-cards",

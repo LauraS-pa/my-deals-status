@@ -185,7 +185,7 @@ async function loadFilters(page, context, admin) {
 }
 
 /** Keep admin list order; skip failed/deactivated/noise; de-dupe by name. */
-function productsFromList(list, englishTitleMap) {
+function productsFromList(list, englishTitleMap, { appId, region } = {}) {
   const names = [];
   const seen = new Set();
   for (const row of list) {
@@ -193,7 +193,11 @@ function productsFromList(list, englishTitleMap) {
     const name = productName(row, englishTitleMap);
     if (!name) continue;
     const trimmed = String(name).trim().replace(/\s+/g, " ");
-    if (!trimmed || shouldIgnoreProductName(trimmed) || seen.has(trimmed)) {
+    if (
+      !trimmed ||
+      shouldIgnoreProductName(trimmed, { appId, region }) ||
+      seen.has(trimmed)
+    ) {
       continue;
     }
     seen.add(trimmed);
@@ -240,9 +244,16 @@ async function fetchListRows(page, context, admin, searchParam) {
   return extractList(res.body);
 }
 
-async function fetchLiveFor(page, context, admin, searchParam, englishTitleMap) {
+async function fetchLiveFor(
+  page,
+  context,
+  admin,
+  searchParam,
+  englishTitleMap,
+  { appId, region } = {}
+) {
   const rows = await fetchListRows(page, context, admin, searchParam);
-  return productsFromList(rows, englishTitleMap);
+  return productsFromList(rows, englishTitleMap, { appId, region });
 }
 
 /** IE/UK English titles keyed by sequence_name for EU local-language catalogs. */
@@ -392,7 +403,8 @@ async function main() {
           session.context,
           admin,
           searchParam,
-          englishTitleMap
+          englishTitleMap,
+          { appId: app.id, region }
         );
         console.log(`${products.length} live`);
         live[region] = products;
