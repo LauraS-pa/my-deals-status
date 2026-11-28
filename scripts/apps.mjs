@@ -27,42 +27,89 @@ export const LIVE_STATUS = 1;
 
 const US_CA = new Set(["US", "CA"]);
 
+export function normalizeLabel(value) {
+  return String(value ?? "")
+    .trim()
+    .toLowerCase()
+    .replace(/[_-]+/g, " ")
+    .replace(/\s+/g, " ");
+}
+
 export function adminForRegion(region) {
   return US_CA.has(String(region).toUpperCase()) ? ADMIN_US : ADMIN_EU;
 }
 
 /**
  * Preferred language matchers per region (one language only).
- * US/CA → English, BE → French; others use the local default tongue.
+ * US/CA → US/CA English; IE/UK → English; other EU use local API lang.
  */
 export const REGION_LANG_MATCHERS = {
   US: ["en-US", "en", "english"],
   CA: ["en-CA", "en-US", "en", "english"],
-  BE: ["fr-BE", "fr-FR", "fr", "french"],
-  FR: ["fr-FR", "fr", "french"],
-  IT: ["it-IT", "it", "italian"],
-  IE: ["en-IE", "en-GB", "en-US", "en", "english"],
-  ES: ["es-ES", "es", "spanish"],
-  NL: ["nl-NL", "nl", "dutch"],
-  DE: ["de-DE", "de", "german"],
-  AT: ["de-AT", "de-DE", "de", "german"],
-  UK: ["en-GB", "en-UK", "en", "english"],
+  BE: ["en-GB", "en-BE", "en-IE", "en-US", "en", "english"],
+  FR: ["en-GB", "en-FR", "en-IE", "en-US", "en", "english"],
+  IT: ["en-GB", "en-IT", "en-IE", "en-US", "en", "english"],
+  IE: ["en-GB", "en-IE", "en-US", "en", "english"],
+  ES: ["en-GB", "en-ES", "en-IE", "en-US", "en", "english"],
+  NL: ["en-GB", "en-NL", "en-IE", "en-US", "en", "english"],
+  DE: ["en-GB", "en-DE", "en-IE", "en-US", "en", "english"],
+  AT: ["en-GB", "en-AT", "en-DE", "en-IE", "en-US", "en", "english"],
+  UK: ["en-GB", "en-UK", "en-IE", "en-US", "en", "english"],
 };
 
+/** Titles that are app/category labels, not real deal products. */
+const APP_NAME_TITLES = new Set(
+  [
+    "freeprints",
+    "photobooks",
+    "photobook",
+    "photo books",
+    "photo book",
+    "photo tiles",
+    "photo tile",
+    "photo art",
+    "photoart",
+    "art cards",
+    "artcards",
+    "freeprints cards",
+    "ink cards",
+    "ink",
+    "premium wall art",
+    "photo greeting card",
+    "photo greeting cards",
+  ].map(normalizeLabel)
+);
+
+/**
+ * Language for the list API call.
+ * US/CA/IE/UK → English. Other EU → local catalog lang (only option);
+ * English display titles are applied via IE/UK mapping.
+ */
 export function pickLang(langList, region, apiDefaultLang) {
-  const matchers = REGION_LANG_MATCHERS[String(region).toUpperCase()] || [];
-  const matched = resolveOption(langList, matchers);
-  if (matched) return matched.value;
+  const code = String(region).toUpperCase();
+  const matchers = REGION_LANG_MATCHERS[code] || [];
+  if (US_CA.has(code) || code === "UK" || code === "IE") {
+    const matched = resolveOption(langList, matchers);
+    if (matched) return matched.value;
+    if (apiDefaultLang) return apiDefaultLang;
+    return langList?.[0]?.value || "";
+  }
   if (apiDefaultLang) return apiDefaultLang;
   return langList?.[0]?.value || "";
 }
 
-/** Drop internal codes (fg_gift_monthly) and PC MyDeals promo rows. */
+export function needsEnglishTitleMap(region) {
+  const code = String(region).toUpperCase();
+  return !US_CA.has(code) && code !== "UK" && code !== "IE";
+}
+
+/** Drop internal codes, PC MyDeals rows, and bare app/category names. */
 export function shouldIgnoreProductName(name) {
   const n = String(name ?? "").trim();
   if (!n) return true;
   if (/^[a-z][a-z0-9]*(?:_[a-z0-9]+)+$/i.test(n)) return true;
   if (/pc\s*my\s*deals/i.test(n)) return true;
+  if (APP_NAME_TITLES.has(normalizeLabel(n))) return true;
   return false;
 }
 
@@ -104,14 +151,6 @@ export const APPS = [
     regions: ["US"],
   },
 ];
-
-export function normalizeLabel(value) {
-  return String(value ?? "")
-    .trim()
-    .toLowerCase()
-    .replace(/[_-]+/g, " ")
-    .replace(/\s+/g, " ");
-}
 
 /**
  * Resolve an admin filter option (site/region/status) against preferred matchers.

@@ -10,6 +10,7 @@ import {
   LIVE_STATUS,
   adminForRegion,
   isExcludedProduct,
+  needsEnglishTitleMap,
   pickLang,
   resolveOption,
   shouldIgnoreProductName,
@@ -30,7 +31,11 @@ function writeJson(filePath, data) {
   fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, "utf8");
 }
 
-function productName(row) {
+function productName(row, englishTitleMap) {
+  if (englishTitleMap && row?.sequence_name) {
+    const mapped = englishTitleMap.get(row.sequence_name);
+    if (mapped) return mapped;
+  }
   return (
     row.live_title ||
     row.pre_title ||
@@ -180,12 +185,12 @@ async function loadFilters(page, context, admin) {
 }
 
 /** Keep admin list order; skip failed/deactivated/noise; de-dupe by name. */
-function productsFromList(list) {
+function productsFromList(list, englishTitleMap) {
   const names = [];
   const seen = new Set();
   for (const row of list) {
     if (isExcludedProduct(row)) continue;
-    const name = productName(row);
+    const name = productName(row, englishTitleMap);
     if (!name) continue;
     const trimmed = String(name).trim().replace(/\s+/g, " ");
     if (!trimmed || shouldIgnoreProductName(trimmed) || seen.has(trimmed)) {
@@ -219,7 +224,7 @@ async function resolveLang(page, context, admin, baseParam, region) {
   return pickLang(filters.langList, region, apiDefault);
 }
 
-async function fetchLiveFor(page, context, admin, searchParam) {
+async function fetchListRows(page, context, admin, searchParam) {
   const res = await apiGetWithFallback(
     page,
     context,
@@ -232,7 +237,54 @@ async function fetchLiveFor(page, context, admin, searchParam) {
       `mydeals/list failed for ${JSON.stringify(searchParam)} on ${admin.id} (${res.status})`
     );
   }
-  return productsFromList(extractList(res.body));
+  return extractList(res.body);
+}
+
+async function fetchLiveFor(page, context, admin, searchParam, englishTitleMap) {
+  const rows = await fetchListRows(page, context, admin, searchParam);
+  return productsFromList(rows, englishTitleMap);
+}
+
+/** IE/UK English titles keyed by sequence_name for EU local-language catalogs. */
+async function loadEnglishTitleMap(session, siteValue) {
+  const attempts = [
+    { region: "UK", lang: "en-GB" },
+    { region: "IE", lang: "en-IE" },
+  ];
+  for (const attempt of attempts) {
+    const regionOpt = resolveOption(session.filters.regionList, [attempt.region], {
+      preferExactValue: attempt.region,
+    });
+    if (!regionOpt) continue;
+    try {
+      const rows = await fetchListRows(session.page, session.context, session.admin, {
+        source: session.source,
+        site: siteValue,
+        region: regionOpt.value,
+        product: "",
+        status: session.liveStatus,
+        lang: attempt.lang,
+      });
+      if (!rows.length) continue;
+      const map = new Map();
+      for (const row of rows) {
+        const title = (row.live_title || row.pre_title || "").trim();
+        if (row.sequence_name && title) map.set(row.sequence_name, title);
+      }
+      if (map.size) {
+        console.log(
+          `English title map for site=${siteValue}: ${map.size} from ${attempt.region}/${attempt.lang}`
+        );
+        return map;
+      }
+    } catch (error) {
+      console.warn(
+        `English title map ${attempt.region} failed for site=${siteValue}: ${error.message}`
+      );
+    }
+  }
+  console.warn(`No English title map for site=${siteValue}`);
+  return new Map();
 }
 
 async function openAdminSession(browser, admin, authPath) {
@@ -273,6 +325,7 @@ async function main() {
     );
 
     const nextApps = [];
+    const englishMapsBySite = new Map();
 
     for (const app of APPS) {
       const live = {};
@@ -320,6 +373,17 @@ async function main() {
         );
         const searchParam = { ...baseParam, lang };
 
+        let englishTitleMap;
+        if (admin.id === "eu" && needsEnglishTitleMap(region)) {
+          if (!englishMapsBySite.has(siteOpt.value)) {
+            englishMapsBySite.set(
+              siteOpt.value,
+              await loadEnglishTitleMap(session, siteOpt.value)
+            );
+          }
+          englishTitleMap = englishMapsBySite.get(siteOpt.value);
+        }
+
         process.stdout.write(
           `Checking ${app.name} / ${region} lang=${lang || "—"} (${admin.id.toUpperCase()})… `
         );
@@ -327,7 +391,8 @@ async function main() {
           session.page,
           session.context,
           admin,
-          searchParam
+          searchParam,
+          englishTitleMap
         );
         console.log(`${products.length} live`);
         live[region] = products;
